@@ -3,18 +3,19 @@ namespace Elementor\Tutor;
 use WP_Query;
 
 class Elementor_Helper{
-    public static function get_course_terms(){
+    public static function get_course_terms($empty = true){
         $terms = get_terms( array( 
             'taxonomy' => 'course-category',
-            'parent'   => 0
+            'parent'   => 0,
+            'hide_empty' => $empty,
         ) );
         return $terms;
     }
 
-    public static function course_query(){
+    public static function course_query($per_page){
         $args = array(
             'post_type' => 'courses',
-            'posts_per_page' => -1, 
+            'posts_per_page' => $per_page, 
         );
         $query = new WP_Query( $args );
         

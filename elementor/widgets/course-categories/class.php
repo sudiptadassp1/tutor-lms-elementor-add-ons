@@ -1,19 +1,19 @@
 <?php
 namespace Elementor\Tutor\widgets;
-use Elementor\Tutor\widgets\Course_Style_1;
+ use Elementor\Tutor\widgets\Course_Categories_Style_1;
 
-class Tutor_courses extends \Elementor\Widget_Base {
+class Tutor_courses_categories extends \Elementor\Widget_Base {
 
 	public function get_name() {
-        return 'courses';
+        return 'course-categories';
     }
 
 	public function get_title() {
-        return __('Courses');
+        return __('Course Categories');
     }
 
     public function get_icon() {
-		return 'eicon-posts-grid';
+		return 'eicon-archive';
 	}
 
 	public function get_categories() {
@@ -31,31 +31,19 @@ class Tutor_courses extends \Elementor\Widget_Base {
 		);
 
         $this->add_control(
-			'course_grid_column',
+			'category_grid_column',
 			[
-				'label' => __( 'Grid Column', 'tutor' ),
+				'label' => __( 'categories Grid Column', 'tutor' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
 				'default' => '3',
 				'options' => [
-					'1'  => __( '1', 'tutor' ),
 					'2' => __( '2', 'tutor' ),
 					'3' => __( '3', 'tutor' ),
 					'4' => __( '4', 'tutor' ),
+					'6' => __( '6', 'tutor' ),
 				],
 			]
 		);
-
-		$this->add_control(
-			'course_per_page',
-			[
-				'label' => __( 'Courses Per Page', 'tutor' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 100,
-				'default' => 3,
-			]
-		);
-
 
 		$this->end_controls_section();
 
@@ -63,8 +51,8 @@ class Tutor_courses extends \Elementor\Widget_Base {
 
     protected function render() {
 		$settings = $this->get_settings_for_display();
-        require_once(TUTOR_BASE_DIR.'elementor/widgets/courses/style_1.php');
-        Course_Style_1::course_grid_style($settings); 
+        require_once(TUTOR_BASE_DIR.'elementor/widgets/course-categories/style_1.php');
+        Course_Categories_Style_1::category_grid_style($settings); 
     }
 
 }
