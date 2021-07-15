@@ -74,7 +74,7 @@ Course Widget
     border: unset !important;
     border-radius: 10px !important;
     box-shadow: 0px 0px 6px 0px #cacaca;
-    height: 512px;
+    height: 500px;
 }
 .course_grid img.course_thumbnail_image {
     padding: 1.25rem;
@@ -268,8 +268,8 @@ hr{
     display: block;
 }
 
-.card.additional-info {
-    border: dashed 2px #909090 !important;
+.additional-info {
+    border: dashed 2px #909090;
 }
 
 .card.additional-info .title {
@@ -280,6 +280,10 @@ hr{
 .additional-info button {
     font-size: 20px;
     margin: 0 35px;
+}
+
+.all_course_button{
+    border-radius: 5px;
 }
 
 /* Course Widget End */
@@ -411,3 +415,4 @@ Course Category Widget
 }
 
 /* Course Category Widget end */
+

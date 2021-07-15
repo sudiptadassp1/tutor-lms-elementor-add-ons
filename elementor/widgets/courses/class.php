@@ -21,44 +21,8 @@ class Tutor_courses extends \Elementor\Widget_Base {
 	}
 
     protected function _register_controls() {   
-       
-		$this->start_controls_section(
-			'content_section',
-			[
-				'label' => __( 'Content', 'tutor' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-        $this->add_control(
-			'course_grid_column',
-			[
-				'label' => __( 'Grid Column', 'tutor' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => '3',
-				'options' => [
-					'1'  => __( '1', 'tutor' ),
-					'2' => __( '2', 'tutor' ),
-					'3' => __( '3', 'tutor' ),
-					'4' => __( '4', 'tutor' ),
-				],
-			]
-		);
-
-		$this->add_control(
-			'course_per_page',
-			[
-				'label' => __( 'Courses Per Page', 'tutor' ),
-				'type' => \Elementor\Controls_Manager::NUMBER,
-				'min' => 1,
-				'max' => 100,
-				'default' => 3,
-			]
-		);
-
-
-		$this->end_controls_section();
-
+		require_once(TUTOR_BASE_DIR.'elementor/widgets/courses/tabs/content.php');
+		require_once(TUTOR_BASE_DIR.'elementor/widgets/courses/tabs/style.php');
 	}
 
     protected function render() {

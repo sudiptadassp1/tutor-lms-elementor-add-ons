@@ -1,6 +1,6 @@
 <?php
 namespace Elementor\Tutor\widgets;
- use Elementor\Tutor\widgets\Course_Categories_Style_1;
+use Elementor\Tutor\widgets\Course_Categories_Style_1;
 
 class Tutor_courses_categories extends \Elementor\Widget_Base {
 
@@ -20,33 +20,24 @@ class Tutor_courses_categories extends \Elementor\Widget_Base {
 		return [ 'tutor-addons' ];
 	}
 
+	public function get_course_terms(){
+		$course_terms = get_terms( array( 
+            'taxonomy' => 'course-category',
+            'parent'   => 0,
+            'hide_empty' => $empty,
+        ) );
+		$term_loop = array();
+		foreach($course_terms as $i=>$course_term){
+			$term_loop[$course_term->term_id] = $course_term->name;
+		}
+
+		return $term_loop;
+        
+	}
+
     protected function _register_controls() {   
-       
-		$this->start_controls_section(
-			'content_section',
-			[
-				'label' => __( 'Content', 'tutor' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-        $this->add_control(
-			'category_grid_column',
-			[
-				'label' => __( 'categories Grid Column', 'tutor' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => '3',
-				'options' => [
-					'2' => __( '2', 'tutor' ),
-					'3' => __( '3', 'tutor' ),
-					'4' => __( '4', 'tutor' ),
-					'6' => __( '6', 'tutor' ),
-				],
-			]
-		);
-
-		$this->end_controls_section();
-
+		require_once(TUTOR_BASE_DIR.'elementor/widgets/course-categories/tabs/content.php');
+		require_once(TUTOR_BASE_DIR.'elementor/widgets/course-categories/tabs/style.php');
 	}
 
     protected function render() {

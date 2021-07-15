@@ -2,6 +2,7 @@
 namespace Elementor\Tutor;
 use Elementor\Tutor\widgets\Tutor_courses;
 use Elementor\Tutor\widgets\Tutor_courses_categories;
+use Elementor\Tutor\widgets\Tutor_course_Instructor;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -35,6 +36,7 @@ final class Tutor_Elementor_addon {
 	public function tutor_enqueue_scripts(){
 		wp_enqueue_style( 'tutor-elementor', plugin_dir_url( __FILE__ ) . '../assets/css/tutor-elementor.css' );
 		wp_enqueue_script( 'isotope-library', 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js', null, null, false );
+		wp_enqueue_script( 'masonry-library', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', null, null, false );
 		wp_enqueue_script( 'tutor-elementor-core-js', plugin_dir_url( __FILE__ ) . '../assets/js/tutor-lementor-addons-core.js', array( 'jquery' ), true );
 	}
 
@@ -110,10 +112,12 @@ final class Tutor_Elementor_addon {
 		// Include Widget files
 		require_once( __DIR__ . '/widgets/courses/class.php' );
 		require_once( __DIR__ . '/widgets/course-categories/class.php' );
+		require_once( __DIR__ . '/widgets/course-instructor/class.php' );
 
 		// Register widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_courses() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_courses_categories() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_course_Instructor() );
 
 	}
 

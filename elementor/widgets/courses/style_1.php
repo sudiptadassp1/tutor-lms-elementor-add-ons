@@ -15,7 +15,7 @@ class Course_Style_1{
         ?>
             <div class="row">
                 <div class="col-sm-12">
-                    <div class='course_category'>
+                    <div class='course_category' style="text-align:<?php _e($course_settings['filter_align']); ?>">
                         <span class='category_name active' data-filter="*">All Categories</span>
                         <?php
                             foreach($course_terms as $course_term){    
@@ -69,11 +69,11 @@ class Course_Style_1{
                                                 }
                                             ?>
                                         </div>
-                                        <h3 class="card-title"><?php the_title(); ?></h3>
+                                        <h3 class="card-title front-title" style="text-align: <?php _e($course_settings['front_title_align']); ?>"><?php the_title(); ?></h3>
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <?php
-                                                    Elementor_Helper::get_instructor_name($course_instructors);
+                                                    Elementor_Helper::get_instructor_name($course_instructors, $course_settings['front_instructor_align']);
                                                 ?> 
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@ class Course_Style_1{
                                         <div class="single_course_footer">
                                             <div class="row">
                                                 <div class="col-sm-6">
-                                                    <div class="course-fee"><?php _e($course_price, 'tutor'); ?></div>
+                                                    <div class="course-fee price-title"><?php _e($course_price, 'tutor'); ?></div>
                                                 </div>
                                                 <div class="col-6">
                                                     <?php
@@ -114,7 +114,7 @@ class Course_Style_1{
                                                 }
                                             ?>
                                         </h5>
-                                        <h3 class="back card-title course_back_face"><?php the_title(); ?></h3>
+                                        <h3 class="back card-title course_back_face back_title" style="text-align: <?php _e($course_settings['back_title_align']); ?>"><?php the_title(); ?></h3>
                                         <div class="back_course_excerpt course_back_face">
                                             <?php the_excerpt(); ?>
                                         </div>
@@ -122,7 +122,7 @@ class Course_Style_1{
                                         <div class="row">
                                             <div class="col-sm-6 back_course_instructor course_back_face">
                                                 <?php 
-                                                    Elementor_Helper::get_instructor_name($course_instructors);
+                                                    Elementor_Helper::get_instructor_name($course_instructors, $course_settings['back_instructor_align']);
                                                 ?>
                                             </div>
                                             <div class="col-sm-6">
@@ -146,7 +146,7 @@ class Course_Style_1{
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <a href="<?php _e(get_permalink($course_id)); ?>" class="course_details"><?php _e('See Details', 'tutor'); ?></a>
+                                                <a href="<?php _e(get_permalink($course_id)); ?>" class="course_details"><?php _e($course_settings['button_title'], 'tutor'); ?></a>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="course_back_face back_course_fee"><?php _e($course_price, 'tutor'); ?></div>
@@ -166,16 +166,25 @@ class Course_Style_1{
             else :
                 _e( 'Sorry, no course found.', 'tutor' );
             endif;
+
+            if($course_settings['enable_all_course']){
             ?>
-                <div class="col-sm-<?php echo $grid_column_divider; ?>">
+                <div class="col-sm-<?php 
+                    echo $grid_column_divider; 
+                    foreach($course_terms as $course_term){
+                        echo " ".$course_term->slug;
+                    }
+                ?>">
                     <!-- All course card -->
                     <div class="card additional-info" style="width: 100%; margin-bottom: 35px;">
                         <div class="card-body">
-                            <h3 class="title">
-                                The World’s Largest Selection of Online Courses
+                            <h3 class="title all_course_des">
+                                <?php
+                                    _e($course_settings['all_course_description']);
+                                ?>
                             </h3>   
-                            <a href="">
-                                <button type="button" class="btn btn-primary">Browser All</button>
+                            <a href="<?php _e($course_settings['button-link']['url']); ?>">
+                                <button type="button" class="all_course_button"><?php _e($course_settings['all_course_button_text']); ?></button>
                             </a> 
                         </div>
                     </div>
@@ -183,6 +192,8 @@ class Course_Style_1{
                 </div>
             <?php
 
+            }
+            
          _e("</div>");
     }
     
