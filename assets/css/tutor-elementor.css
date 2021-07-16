@@ -437,7 +437,7 @@ Course Instructor Widget
 }
 
 .instructor_column.first {
-    padding: 30px;
+    padding: 30px 15px;
     border-radius: 30px !important;
     width: 100%;
 }
@@ -456,6 +456,11 @@ Course Instructor Widget
     width: 84%;
     margin: 0px 3%;
     z-index: 2;
+}
+
+.third-block.rest_description_block .description_box{
+    margin: 0px 4%;
+    bottom: 30px;
 }
 
 .first .description_box {
@@ -513,6 +518,43 @@ Course Instructor Widget
 .row_block img {
     height: 100% !important;
 }
+
+@media (max-width: 576px) { 
+    .rest_description_block .description_box{
+        width: 86%;
+    }
+
+    .third-block.rest_description_block .description_box{
+        width: 84.5%;
+    }
+    .first .description_box {
+        width: 86%;
+        margin: 0 7%;
+        right: 0;
+        border-radius: 0 0 15px 15px;
+        bottom: 40px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 993px) { 
+    .rest_description_block .description_box{
+        width: 90%;
+        bottom: 33px;
+    }
+
+    .third-block.rest_description_block .description_box {
+        margin: 0px 3%;
+        bottom: 33px;
+    }
+
+    .first .description_box {
+        width: 90%;
+        right: 36px;
+        border-radius: 0 0 15px 15px;
+        bottom: 50px;
+    }
+ }
+
 
 /* Course Instructor End */
 
