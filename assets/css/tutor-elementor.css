@@ -416,3 +416,103 @@ Course Category Widget
 
 /* Course Category Widget end */
 
+
+/*
+============================
+Course Instructor Widget
+============================
+*/
+
+/* Course Instructor Start */
+
+.instructor_column {
+    padding: 15px;
+    width: 100%;
+}
+
+.instructor_column img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px !important;
+}
+
+.instructor_column.first {
+    padding: 30px;
+    border-radius: 30px !important;
+    width: 100%;
+}
+
+.instructor_column.first, .instructor_column.rest_description_block {
+    position: relative;
+}
+
+.rest_description_block .description_box {
+    position: absolute;
+    bottom: 22px;
+    background-color: white;
+    text-align: center;
+    padding: 20px 30px;
+    border-radius: 0 0 15px 15px;
+    width: 84%;
+    margin: 0px 3%;
+    z-index: 2;
+}
+
+.first .description_box {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    background-color: white;
+    text-align: center;
+    padding: 20px 30px;
+    border-radius: 0 0 30px 0;
+    z-index: 2;
+}
+
+.course_instructor_section .author-title{
+    margin-bottom: 5px;
+}
+
+.description_box::before {
+    content: "";
+    background-color: var(--color_primary);
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    -webkit-transition: all 0.4s cubic-bezier(0.3, 0.02, 0, 0.6);
+    transition: all 0.4s cubic-bezier(0.3, 0.02, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 0 0 15px 15px;
+    z-index: -1;
+}
+
+.row_block:hover .description_box::before {
+    opacity: 1;
+    visibility: visible;
+    border-radius: 0 0 15px 15px;
+    top: 0;
+    left: 0;
+}
+
+.first .description_box::before{
+    border-radius: 0 0 15px 0;
+}
+
+.first:hover .description_box::before {
+    border-radius: 0 0 15px 0;
+}
+
+.row_block:hover .author-title a, .row_block:hover .author-designation {
+    color: #ffffff;
+}
+
+.row_block img {
+    height: 100% !important;
+}
+
+/* Course Instructor End */
+
