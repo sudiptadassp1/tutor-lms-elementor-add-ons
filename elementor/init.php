@@ -3,6 +3,7 @@ namespace Elementor\Tutor;
 use Elementor\Tutor\widgets\Tutor_courses;
 use Elementor\Tutor\widgets\Tutor_courses_categories;
 use Elementor\Tutor\widgets\Tutor_course_Instructor;
+use Elementor\Tutor\widgets\Tutor_News;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -113,11 +114,13 @@ final class Tutor_Elementor_addon {
 		require_once( __DIR__ . '/widgets/courses/class.php' );
 		require_once( __DIR__ . '/widgets/course-categories/class.php' );
 		require_once( __DIR__ . '/widgets/course-instructor/class.php' );
+		require_once( __DIR__ . '/widgets/news-and-blog/class.php' );
 
 		// Register widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_courses() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_courses_categories() );
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_course_Instructor() );
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_News() );
 
 	}
 

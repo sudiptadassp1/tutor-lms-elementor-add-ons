@@ -71,5 +71,29 @@ class Elementor_Helper{
         $terms_filter = get_term_by('id', $term_id, 'course-category');
         return $terms_filter;
     } 
+
+    public function get_all_post_types(){
+        $get_post_type = array();
+        $args = array(
+            'public'   => true
+        );
+        $post_output = 'objects';
+        $all_post_types = get_post_types( $args, $output );
+
+        foreach($all_post_types as $post_types){
+            $get_post_type[$post_types->name] = $post_types->label;
+        }
+        return $get_post_type;
+    }
+
+    public static function get_post_by_post_type($post_type){
+        $args = array(
+            'post_type' => $post_type,
+            'posts_per_page' => 5, 
+        );
+
+        return new WP_Query( $args );
+    }
+
+
 }
-new Elementor_Helper();

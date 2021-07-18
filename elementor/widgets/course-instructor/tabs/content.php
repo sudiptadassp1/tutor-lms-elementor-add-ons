@@ -15,7 +15,6 @@ $this->add_control(
         'default' => 'style_1',
         'options' => [
             'style_1'  => __( 'Grid View', 'tutor' ),
-            'style_2' => __( 'Masonry View', 'tutor' ),
         ],
     ]
 );
