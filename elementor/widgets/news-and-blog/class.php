@@ -25,7 +25,7 @@ class Tutor_News extends \Elementor\Widget_Base {
         require_once(TUTOR_BASE_DIR.'elementor/helper.php');
         $helper = new Elementor_Helper(); 
 		require_once(TUTOR_BASE_DIR.'elementor/widgets/news-and-blog/tabs/content.php');
-		// require_once(TUTOR_BASE_DIR.'elementor/widgets/courses/tabs/style.php');
+		require_once(TUTOR_BASE_DIR.'elementor/widgets/news-and-blog/tabs/style.php');
 	}
 
     protected function render() {

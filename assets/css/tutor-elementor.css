@@ -705,8 +705,55 @@ News And Blog Widget
 }
 
 .blog-box.style-1 .figure-box img {
-    height: 200px;
+    height: 190px;
 }
 
+.view_all_button a.view_all_post_btn {
+    background-color: var(--color_primary);
+    color: white;
+    padding: 10px 50px;
+    border-radius: 5px;
+}
+
+.view_all_button {
+    text-align: center;
+}
+
+.blog-box.style-2 .figure-box::after {
+    content: url(../media/element13.png);
+    position: absolute;
+    z-index: 0;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+}
+
+@media (max-width: 991px){
+    .middle_card_box {
+        display: none;
+    }
+}
+
+.blog-box:hover .figure-box img {
+    -webkit-transform: scale(1.12, 1.12);
+    -ms-transform: scale(1.12, 1.12);
+    transform: scale(1.12, 1.12);
+}
+
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
 /* News And Blog End */
 

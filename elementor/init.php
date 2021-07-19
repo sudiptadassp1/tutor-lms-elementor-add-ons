@@ -36,9 +36,11 @@ final class Tutor_Elementor_addon {
 
 	public function tutor_enqueue_scripts(){
 		wp_enqueue_style( 'tutor-elementor', plugin_dir_url( __FILE__ ) . '../assets/css/tutor-elementor.css' );
+		wp_enqueue_style( 'tutor-animate-css', plugin_dir_url( __FILE__ ) . '../dependencies/animate/animate.min.css' );
 		wp_enqueue_script( 'isotope-library', 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js', null, null, false );
 		wp_enqueue_script( 'masonry-library', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', null, null, false );
 		wp_enqueue_script( 'tutor-elementor-core-js', plugin_dir_url( __FILE__ ) . '../assets/js/tutor-lementor-addons-core.js', array( 'jquery' ), true );
+		wp_enqueue_script( 'tutor-wow-js', plugin_dir_url( __FILE__ ) . '../dependencies/wow/js/wow.min.js', '', true );
 	}
 
 	public function i18n() {

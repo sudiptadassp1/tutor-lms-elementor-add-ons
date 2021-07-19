@@ -7,7 +7,7 @@ $this->start_controls_section(
     ]
 );
 
-    //Start Icon Style Tab
+    //Start Style Tab
     $this->start_controls_tabs(
         'instructor_style_tabs'
     );
@@ -201,6 +201,5 @@ $this->start_controls_section(
         $this->end_controls_tab();
 
     $this->end_controls_tabs();
-    //End Icon Style Tab
 
 $this->end_controls_section();
