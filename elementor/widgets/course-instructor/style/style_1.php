@@ -22,7 +22,7 @@ class Course_Instructor_Style_1{
                             $teacher_original_image = str_replace('-150x150.', '.', $thumbnail_avater);
                             if($flag == 1){
                                 ?>
-                                    <div class="col-lg-6 col-sm-6 col-md-12 instructor_column first row_block first-block" >
+                                    <div class="col-lg-6 col-sm-6 col-md-12 instructor_column first row_block first-block wow fadeInLeft animated" data-wow-duration="1s" data-wow-delay="0.1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s;">
                                         <img src="<?php _e($teacher_original_image); ?>" alt="">
                                         <div class="description_box">
                                             <h3 class="author-title">
@@ -48,7 +48,7 @@ class Course_Instructor_Style_1{
                                     <?php
                                 }
                                     ?>  
-                                        <div class=" col-lg-6 col-sm-6 col-md-12 row_block instructor_column rest_description_block second-block">
+                                        <div class=" col-lg-6 col-sm-6 col-md-12 row_block instructor_column rest_description_block second-block wow fadeInUp animated" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s;">
                                             <img src="<?php _e($teacher_original_image); ?>" alt="">
                                             <div class="description_box">
                                                 <h4 class="author-title">
@@ -74,7 +74,7 @@ class Course_Instructor_Style_1{
                             }
                             else{
                                 ?>
-                                    <div class=" col-lg-4 col-sm-4 col-md-12 row_block instructor_column rest_description_block third-block">
+                                    <div class=" col-lg-4 col-sm-4 col-md-12 row_block instructor_column rest_description_block third-block wow fadeInLeft animated" data-wow-duration="1s" data-wow-delay="0.1s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.1s;">
                                         <img src="<?php _e($teacher_original_image); ?>" alt="">
                                         <div class="description_box">
                                             <h4 class="author-title">
