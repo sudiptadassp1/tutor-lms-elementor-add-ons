@@ -1,25 +1,15 @@
 <?php
 namespace Elementor\Tutor\widgets;
 use Elementor\Tutor\widgets\Course_Style_1;
+use Elementor\Tutor\Widget_Base;
 
-class Tutor_courses extends \Elementor\Widget_Base {
-
-	public function get_name() {
-        return 'courses';
-    }
-
-	public function get_title() {
-        return __('Courses');
-    }
-
-    public function get_icon() {
-		return 'eicon-posts-grid';
+class Tutor_courses extends Widget_Base {
+	public function __construct($data = [], $args = null){
+        $this->widget_name = "courses";
+        $this->widget_label = "Courses";
+		parent::__construct($data, $args);
 	}
-
-	public function get_categories() {
-		return [ 'tutor-addons' ];
-	}
-
+    
     protected function _register_controls() {   
 		require_once(TUTOR_BASE_DIR.'elementor/widgets/courses/tabs/content.php');
 		require_once(TUTOR_BASE_DIR.'elementor/widgets/courses/tabs/style.php');

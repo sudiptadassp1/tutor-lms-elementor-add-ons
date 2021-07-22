@@ -1,23 +1,14 @@
 <?php
 namespace Elementor\Tutor\widgets;
 use Elementor\Tutor\widgets\Course_Categories_Style_1;
+use Elementor\Tutor\Widget_Base;
 
-class Tutor_courses_categories extends \Elementor\Widget_Base {
+class Tutor_courses_categories extends Widget_Base {
 
-	public function get_name() {
-        return 'course-categories';
-    }
-
-	public function get_title() {
-        return __('Course Categories');
-    }
-
-    public function get_icon() {
-		return 'eicon-archive';
-	}
-
-	public function get_categories() {
-		return [ 'tutor-addons' ];
+	public function __construct($data = [], $args = null){
+        $this->widget_name = "course-categories";
+        $this->widget_label = "Course Categories";
+		parent::__construct($data, $args);
 	}
 
 	public function get_course_terms(){

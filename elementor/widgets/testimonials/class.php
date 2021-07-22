@@ -1,23 +1,14 @@
 <?php
 namespace Elementor\Tutor\widgets;
 use Elementor\Tutor\widgets\Testimonials_Style;
+use Elementor\Tutor\Widget_Base;
 
-class Tutor_Testimonials extends \Elementor\Widget_Base {
+class Tutor_Testimonials extends Widget_Base {
 
-	public function get_name() {
-        return 'testimonials';
-    }
-
-	public function get_title() {
-        return __('Testimonials');
-    }
-
-    public function get_icon() {
-		return 'eicon-blockquote';
-	}
-
-	public function get_categories() {
-		return [ 'tutor-addons' ];
+	public function __construct($data = [], $args = null){
+        $this->widget_name = "testimonials";
+        $this->widget_label = "Testimonials";
+		parent::__construct($data, $args);
 	}
 
     protected function _register_controls() {   

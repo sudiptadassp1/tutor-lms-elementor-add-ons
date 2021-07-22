@@ -1,10 +1,5 @@
 <?php
 namespace Elementor\Tutor;
-use Elementor\Tutor\widgets\Tutor_courses;
-use Elementor\Tutor\widgets\Tutor_courses_categories;
-use Elementor\Tutor\widgets\Tutor_course_Instructor;
-use Elementor\Tutor\widgets\Tutor_News;
-use Elementor\Tutor\widgets\Tutor_Testimonials;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -33,6 +28,7 @@ final class Tutor_Elementor_addon {
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
 		add_action( 'admin_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
+		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'editor_style' ) );
 	}
 
 	public function tutor_enqueue_scripts(){
@@ -45,6 +41,11 @@ final class Tutor_Elementor_addon {
 		wp_enqueue_script( 'tutor-elementor-core-js', plugin_dir_url( __FILE__ ) . '../assets/js/tutor-lementor-addons-core.js', array( 'jquery' ), true );
 		wp_enqueue_script( 'tutor-common-js', plugin_dir_url( __FILE__ ) . '../assets/js/tutor-common.js', '', '', true );
 		wp_enqueue_script( 'tutor-wow-js', plugin_dir_url( __FILE__ ) . '../dependencies/wow/js/wow.min.js', '', true );
+	}
+
+	public function editor_style(){
+		$logo_img = plugins_url('../assets/media/logo.png', __FILE__);;
+		wp_add_inline_style( 'elementor-editor', '.elementor-element .icon .elementor-tutor-lms-addon-icon {content: url( '.$logo_img.');width: 28px;}' );
 	}
 
 	public function i18n() {
@@ -115,21 +116,23 @@ final class Tutor_Elementor_addon {
 	}
 
 	public function init_widgets() {
+		require_once (__DIR__ . '/widget-base.php');
+		$widgets = array(
+			'courses' => 'Tutor_courses',
+			'course-categories' => 'Tutor_courses_categories',
+			'course-instructor' => 'Tutor_course_Instructor',
+			'news-and-blog' => 'Tutor_News',
+			'testimonials' => 'Tutor_Testimonials',
+		);
 
-		// Include Widget files
-		require_once( __DIR__ . '/widgets/courses/class.php' );
-		require_once( __DIR__ . '/widgets/course-categories/class.php' );
-		require_once( __DIR__ . '/widgets/course-instructor/class.php' );
-		require_once( __DIR__ . '/widgets/news-and-blog/class.php' );
-		require_once( __DIR__ . '/widgets/testimonials/class.php' );
-
-		// Register widget
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_courses() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_courses_categories() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_course_Instructor() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_News() );
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Tutor_Testimonials() );
-
+		foreach($widgets as $dirname => $template){
+			$file = __DIR__.'/widgets/'.$dirname.'/class.php';
+			if(file_exists($file)){
+				require_once $file;
+				$classname = __NAMESPACE__.'\widgets\\'.$template;
+				\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new $classname );
+			}
+		}		
 	}
 
 	public function admin_notice_missing_main_plugin() {

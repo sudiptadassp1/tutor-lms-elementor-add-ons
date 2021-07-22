@@ -1,23 +1,14 @@
 <?php
 namespace Elementor\Tutor\widgets;
 use Elementor\Tutor\widgets\Course_Instructor_Style_1;
+use Elementor\Tutor\Widget_Base;
 
-class Tutor_course_Instructor extends \Elementor\Widget_Base {
+class Tutor_course_Instructor extends Widget_Base {
 
-	public function get_name() {
-        return 'course-instructor';
-    }
-
-	public function get_title() {
-        return __('Course Instructor');
-    }
-
-    public function get_icon() {
-		return 'eicon-gallery-masonry';
-	}
-
-	public function get_categories() {
-		return [ 'tutor-addons' ];
+	public function __construct($data = [], $args = null){
+        $this->widget_name = "course-instructor";
+        $this->widget_label = "Course Instructor";
+		parent::__construct($data, $args);
 	}
 
     protected function _register_controls() {   

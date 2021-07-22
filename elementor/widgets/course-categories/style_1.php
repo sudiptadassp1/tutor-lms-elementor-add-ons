@@ -9,8 +9,7 @@ class Course_Categories_Style_1{
         $column_row_count = 12/$course_settings['category_grid_column'];
         $terms_id_array = $course_settings['course_categories'];
         $course_terms = array();
-        $arr_value_count = count($course_settings['course_categories']);
-        if($arr_value_count <= 0){
+        if(empty($course_settings['course_categories'])){
             $course_terms = Elementor_Helper::get_course_terms(false);
         }else{
             foreach($course_settings['course_categories'] as $term_ids){

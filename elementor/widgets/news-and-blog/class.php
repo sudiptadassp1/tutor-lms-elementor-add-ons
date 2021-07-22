@@ -2,23 +2,14 @@
 namespace Elementor\Tutor\widgets;
 use Elementor\Tutor\widgets\News_Template;
 use Elementor\Tutor\Elementor_Helper;
+use Elementor\Tutor\Widget_Base;
 
-class Tutor_News extends \Elementor\Widget_Base {
+class Tutor_News extends Widget_Base {
 
-	public function get_name() {
-        return 'news_and_blog';
-    }
-
-	public function get_title() {
-        return __('News');
-    }
-
-    public function get_icon() {
-		return 'eicon-single-post';
-	}
-
-	public function get_categories() {
-		return [ 'tutor-addons' ];
+    public function __construct($data = [], $args = null){
+        $this->widget_name = "news_and_blog";
+        $this->widget_label = "News and Blog";
+		parent::__construct($data, $args);
 	}
 
     protected function _register_controls() {   
