@@ -5,11 +5,7 @@ use Elementor\Tutor\Elementor_Helper;
 class Course_Instructor_Style_1{
 
     public static function course_instructor_style(){
-        $args = array(
-            'role' => "tutor_instructor",
-        );
-        // echo "<pre>";
-        $users_data = get_users($args);
+        $users_data = Elementor_Helper::get_instructor();
         $flag = 1;         
         ?>
             <div class="course_instructor_section">
@@ -17,7 +13,6 @@ class Course_Instructor_Style_1{
                     <?php
                         foreach($users_data as $user_data){
                             $teacher_metadata = get_user_meta($user_data->id); 
-                            //print_r($teacher_metadata);
                             $thumbnail_avater = get_avatar_url($user_data->id); 
                             $teacher_original_image = str_replace('-150x150.', '.', $thumbnail_avater);
                             if($flag == 1){

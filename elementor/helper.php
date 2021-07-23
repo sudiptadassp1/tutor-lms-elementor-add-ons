@@ -95,5 +95,14 @@ class Elementor_Helper{
         return new WP_Query( $args );
     }
 
+    public static function get_instructor(){
+        $args = array(
+            'role' => "tutor_instructor",
+        );
+        
+        $instructor_data = get_users($args);
+        return $instructor_data;
+    }
+
 
 }
