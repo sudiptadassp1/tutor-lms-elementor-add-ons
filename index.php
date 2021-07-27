@@ -15,3 +15,13 @@ define( 'TUTOR_TAXONOMY',    'course-category' );
 if ( ! class_exists('Tutor_Elementor_addon') ) {
 	include_once 'elementor/init.php';
 }
+
+// add_filter( 'template_include', 'course_template' );
+function course_template( $template ){
+
+	if(is_singular('courses')){
+		$new_template = trailingslashit(__DIR__).'templates/single-courses.php';
+	}
+	
+	return $new_template;
+}

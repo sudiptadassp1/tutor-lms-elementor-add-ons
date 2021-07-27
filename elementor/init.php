@@ -125,6 +125,7 @@ final class Tutor_Elementor_addon {
 			'testimonials' => 'Tutor_Testimonials',
 			'course-banner' => 'Tutor_Single_course_Banner',
 			'instructor-archive' => 'Instructor_Archive',
+			'course-archive' => 'Course_Archive',
 		);
 
 		foreach($widgets as $dirname => $template){

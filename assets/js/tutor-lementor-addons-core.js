@@ -1,4 +1,7 @@
 jQuery(document).ready(function(){
+  jQuery('.filter_panel_button').click(function(){
+      jQuery(".filter_block .filter_panel").toggleClass('filter_toggle');
+  });
     // init Isotope
     var col_grid = jQuery('.course_grid').isotope({
     // options

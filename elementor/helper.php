@@ -22,6 +22,20 @@ class Elementor_Helper{
         return $query;
     }
 
+
+    public static function course_query_for_archive($per_page){
+        $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+        $args = array(
+            'post_type' => 'courses',
+            'posts_per_page' => $per_page, 
+            'paged' => $paged
+        );
+        $query = new WP_Query( $args );
+        
+        return $query;
+    }
+
+
     public static function course_meta_data($course_id){
         return get_post_meta($course_id);
     }

@@ -1049,3 +1049,63 @@ ul.rating.inline-list {
 }
 
 /* Instructor Archive End */
+
+/* 
+===========================
+Course Archive Widget
+===========================
+*/
+
+/* Course Archive Widget Start */
+
+nav.course_archive_pagination ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav.course_archive_pagination ul li a {
+    color: var(--color_primary);
+    font-weight: 500;
+    padding: 8px 12px;
+    border: solid 2px darkgray;
+    font-size: 18px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+nav.course_archive_pagination ul li:hover a {
+    color: white;
+    background-color: var(--color_primary);
+    border: solid 2px var(--color_primary);
+}
+
+.filter_panel {
+    margin-top: 45px;
+}
+
+.filter_panel.row {
+    box-shadow: 0 0 10px 0px #d0d0d0;
+    border-radius: 10px;
+    padding: 15px 40px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    background-color: white;
+}
+
+.form-check .form-check-label {
+    margin-left: 10px;
+}
+
+.form-check input {
+    margin-top: 6px;
+}
+
+.filter_block{
+    position: relative;
+}
+.filter_toggle{
+    display: none !important;
+}
+/* Course Archive Widget End */

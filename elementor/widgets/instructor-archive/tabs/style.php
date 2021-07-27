@@ -150,7 +150,7 @@
             'selector' => '{{WRAPPER}} .instructor-box.style-1 .footer-content .entry-meta li',
         ]
     );
-
+                                                                                          
     // Image Background Color
 
     $this->add_control(

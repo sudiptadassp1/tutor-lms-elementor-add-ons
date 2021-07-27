@@ -49,11 +49,6 @@ class Instructor_Archive_Style{
                                                     <span class="rating-generated">
                                                         <?php tutor_utils()->star_rating_generator($instructor_rating->rating_avg); ?>
                                                     </span>
-
-                                                    <?php
-                                                        // echo " <span class='rating-digits'>{$instructor_rating->rating_avg}</span> ";
-                                                        // echo " <span class='rating-total-meta'>({$instructor_rating->rating_count})</span> ";
-                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
