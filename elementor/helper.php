@@ -3,6 +3,10 @@ namespace Elementor\Tutor;
 use WP_Query;
 
 class Elementor_Helper{
+    public function __construct(){
+        add_action("wp_ajax_course_filter", array( $this, 'ajax_course_filter' ));
+        add_action("wp_ajax_nopriv_course_filter", array( $this, 'ajax_course_filter_nopriv' ));
+    }
     public static function get_course_terms($empty = true){
         $terms = get_terms( array( 
             'taxonomy' => 'course-category',
@@ -28,7 +32,9 @@ class Elementor_Helper{
         $args = array(
             'post_type' => 'courses',
             'posts_per_page' => $per_page, 
-            'paged' => $paged
+            'paged' => $paged,
+            'orderby' => 'date',
+            'order'   => 'ASC',
         );
         $query = new WP_Query( $args );
         
@@ -116,6 +122,203 @@ class Elementor_Helper{
         
         $instructor_data = get_users($args);
         return $instructor_data;
+    }
+
+    public function ajax_course_filter(){
+        $sort_by = $_POST["sortby"];
+        $category = $_POST["category"];
+        $instructor = $_POST["instructor"];
+        $course_per_page = $_POST["course_per_page"];
+        $course_grid_column = 12/($_POST["course_grid_column"]);
+        $front_title_align = $_POST["front_title_align"];
+        $front_instructor_align = $_POST["front_instructor_align"];
+        $back_title_align = $_POST["back_title_align"];
+        $back_instructor_align = $_POST["back_instructor_align"];
+        $button_title = $_POST["button_title"];
+
+        if(!empty($category)){
+            $args = array(
+                'post_type' => 'courses',
+                'posts_per_page' => -1, 
+                'orderby' => 'date',
+                'order'   => $sort_by,
+                'author__in' => $instructor,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'course-category',
+                        'field'    => 'slug',
+                        'terms'    => $category,
+                    ),
+                ),            
+            );
+        }else{
+            $args = array(
+                'post_type' => 'courses',
+                'posts_per_page' => -1, 
+                'orderby' => 'date',
+                'order'   => $sort_by,
+                'author__in' => $instructor,            
+            );
+        }
+        
+        
+        $course_query_data = new WP_Query( $args );
+        
+        $course_category_color_count  = 1;
+        $users_data = self::get_instructor();
+        $course_id = "";
+        $course_terms = self::get_course_terms();
+
+        if ( $course_query_data->have_posts() ) :
+            while ( $course_query_data->have_posts() ) : $course_query_data->the_post();
+                $course_id = get_the_ID();
+                $course_meta = self::course_meta_data($course_id);
+                $post_thumbnail_url = get_the_post_thumbnail_url($course_id);
+                $course_categories = get_the_terms($course_id, TUTOR_TAXONOMY);
+                $course_instructors = tutor_utils()->get_instructors_by_course($course_id);
+                $course_duration = get_tutor_course_duration_context($course_id);
+                
+
+                if(strtolower($course_meta['_tutor_course_price_type'][0])=="free"){
+                    $course_price = "Free";
+                    $courses_price_class = "free_course";
+                }else{
+                    $course_price = Elementor_Helper::get_woocommerce_course_price($course_meta['_tutor_course_product_id'][0]);
+                    $courses_price_class = "paid_course";
+                }   
+                
+                ?>
+                    <div class="col-sm-<?php _e($course_grid_column); ?> course_card <?php
+                            foreach($course_categories as $course_category){
+                                _e($course_category->slug." ");
+                            }
+                            _e($courses_price_class);
+                        ?> ">
+                        <div class="card" style="width: 100%; margin-bottom: 35px;">
+                            <!-- Card front face start -->
+                            <div class="card_front_face">
+                                <img class="course_thumbnail_image" src="<?php echo get_the_post_thumbnail_url($course_id); ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <div class="course_category category_color_<?php _e($course_category_color_count); ?>"> 
+                                        <?php
+                                            $course_category_color_count += 1;
+                                            if($course_category_color_count>5){
+                                                $course_category_color_count = 1;
+                                            }
+                                            foreach($course_categories as $index=>$course_category){
+                                                $Category_name_in_loop = $course_category->name;
+                                                if($index > 0){
+                                                    $Category_name_in_loop = ", ".$Category_name_in_loop;
+                                                }
+                                                _e($Category_name_in_loop);
+                                            }
+                                        ?>
+                                    </div>
+                                    <h3 class="card-title front-title" style="text-align: <?php _e($front_title_align); ?>"><?php the_title(); ?></h3>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <?php
+                                                self::get_instructor_name($course_instructors, $front_instructor_align);
+                                            ?> 
+                                        </div>
+                                    </div>
+                                    <div class="row course_lesson_details">
+                                        <ul class="inline-list course-feature">
+                                            <li><i class="fas fa-file-excel"></i> <?php _e(tutor_utils()->get_lesson_count_by_course($course_id)." Lessons", "tutor"); ?></li>
+                                            <li><i class="fas fa-briefcase"></i> Online Class</li>
+                                        </ul>
+                                    </div>
+                                    <hr/>
+                                    <div class="single_course_footer">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="course-fee price-title"><?php _e($course_price, 'tutor'); ?></div>
+                                            </div>
+                                            <div class="col-6">
+                                                <?php
+                                                    self::get_course_rating($course_id);
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                       
+                            <!-- Card front face end -->
+
+                            <!-- Card back face start -->
+                            <div class="card_backend">
+                                <div class="card-body back course_back_face">
+                                    <h5 class="back_course_category course_back_face">
+                                        <?php
+                                            foreach($course_categories as $index=>$course_category){
+                                                $Category_name_in_loop = $course_category->name;
+                                                if($index > 0){
+                                                    $Category_name_in_loop = ", ".$Category_name_in_loop;
+                                                }
+                                                _e($Category_name_in_loop);
+                                            }
+                                        ?>
+                                    </h5>
+                                    <h3 class="back card-title course_back_face back_title" style="text-align: <?php _e($back_title_align); ?>"><?php the_title(); ?></h3>
+                                    <div class="back_course_excerpt course_back_face">
+                                        <?php the_excerpt(); ?>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6 back_course_instructor course_back_face">
+                                            <?php 
+                                                self::get_instructor_name($course_instructors, $back_instructor_align);
+                                            ?>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <?php
+                                                self::get_course_rating($course_id);
+                                            ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <ul class="course_back_face course-feature">
+                                            <li><i class="fas fa-bars"></i> <?php _e(tutor_utils()->get_lesson_count_by_course($course_id)." Lessons", "tutor"); ?></li>
+                                            <li><i class="far fa-clock"></i> 
+                                                <?php
+                                                    if($course_duration){
+                                                        _e($course_duration, 'tutor');
+                                                    }
+                                                ?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <a href="<?php _e(get_permalink($course_id)); ?>" class="course_details"><?php _e($button_title, 'tutor'); ?></a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="course_back_face back_course_fee"><?php _e($course_price, 'tutor'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card back face end -->
+
+
+                        </div>
+                    </div>                            
+                <?php
+                $column_row_count++;
+
+            endwhile;
+        else :
+            _e( 'Sorry, no course found.', 'tutor' );
+        endif;
+
+
+        die();
+    }
+
+    public function ajax_course_filter_nopriv(){
+        echo "No priview";
+        die();
     }
 
 

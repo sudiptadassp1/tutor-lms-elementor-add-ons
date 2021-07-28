@@ -1,5 +1,6 @@
 <?php
 namespace Elementor\Tutor;
+use Elementor\Tutor\Elementor_Helper;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -24,11 +25,13 @@ final class Tutor_Elementor_addon {
 	}
 
 	public function __construct() {
-
+		require_once(TUTOR_BASE_DIR.'elementor/helper.php');
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
 		add_action( 'admin_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'editor_style' ) );
+		add_action( 'init', array( $this, 'ajax_script_enqueuer' ));
+		new Elementor_Helper();
 	}
 
 	public function tutor_enqueue_scripts(){
@@ -42,6 +45,14 @@ final class Tutor_Elementor_addon {
 		wp_enqueue_script( 'tutor-common-js', plugin_dir_url( __FILE__ ) . '../assets/js/tutor-common.js', '', '', true );
 		wp_enqueue_script( 'tutor-wow-js', plugin_dir_url( __FILE__ ) . '../dependencies/wow/js/wow.min.js', '', true );
 	}
+
+	function ajax_script_enqueuer() {
+		wp_register_script( "ajax_script", plugin_dir_url( __FILE__ ).'../assets/js/ajax-filter.js', array('jquery') );
+		wp_localize_script( 'ajax_script', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
+	 
+		wp_enqueue_script( 'ajax_script' );
+	 
+	 }
 
 	public function editor_style(){
 		$logo_img = plugins_url('../assets/media/logo.png', __FILE__);;

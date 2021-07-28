@@ -12,7 +12,17 @@ class Course_Archive_Style{
         $course_id = "";
         $course_category_color_count  = 1;
         $users_data = Elementor_Helper::get_instructor();
+
         ?>
+            <div class="row hidden_fields">
+                <input type="hidden" class="hidden_course_per_page" value="<?php _e($course_settings['course_per_page']); ?>">
+                <input type="hidden" class="hidden_course_grid_column" value="<?php _e($course_settings['course_grid_column']); ?>">
+                <input type="hidden" class="hidden_front_title_align" value="<?php _e($course_settings['front_title_align']); ?>">
+                <input type="hidden" class="hidden_front_instructor_align" value="<?php _e($course_settings['front_instructor_align']); ?>">
+                <input type="hidden" class="hidden_back_title_align" value="<?php _e($course_settings['back_title_align']); ?>">
+                <input type="hidden" class="hidden_back_instructor_align" value="<?php _e($course_settings['back_instructor_align']); ?>">
+                <input type="hidden" class="hidden_button_title" value="<?php _e($course_settings['button_title']); ?>">
+            </div>
             <div class="row">
                 <div class="col-lg-12 filter_block">
                     <button type="button" class="btn btn-secondary btn-lg float-right filter_panel_button" >Filter <i class="fa fa-caret-down" aria-hidden="true"></i></button>
@@ -22,23 +32,13 @@ class Course_Archive_Style{
                             <div class="filter_panel_column">
                                 <h5>Sort By</h5>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="sort_latest">
+                                    <input class="form-check-input" type="radio" data-var="sortby" name="inlineRadioOptions" data-id="DESC" id="sort_latest">
                                     <label class="form-check-label" for="inlineRadio1"> Latest</label>
                                 </div>
                             
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="sort_oldest">
+                                    <input class="form-check-input" type="radio" data-var="sortby" name="inlineRadioOptions" data-id="ASC" id="sort_oldest">
                                     <label class="form-check-label" for="inlineRadio1"> Oldest</label>
-                                </div>
-                            
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="sort_course_title_asec">
-                                    <label class="form-check-label" for="inlineRadio1"> Course Title (a-z)</label>
-                                </div>
-                            
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="sort_course_title_desc">
-                                    <label class="form-check-label" for="inlineRadio1"> Course Title (z-a)</label>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@ class Course_Archive_Style{
                                     foreach($course_terms as $terms){
                                         ?>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="inlineRadioOptions" id="sort_<?php _e($terms->slug) ?>">
+                                                <input class="form-check-input" type="checkbox" data-var="category" name="inlineRadioOptions" data-id="<?php _e($terms->slug) ?>" id="sort_<?php _e($terms->slug) ?>">
                                                 <label class="form-check-label" for="inlineRadio1"><?php _e($terms->name); ?></label>
                                             </div>
                                         <?php
@@ -67,7 +67,7 @@ class Course_Archive_Style{
                                         $instructor_metadata = get_user_meta($instructor->id);
                                         ?>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="inlineRadioOptions">
+                                                <input class="form-check-input" type="checkbox" data-var="instructor" name="inlineRadioOptions" data-id="<?php _e($instructor->id) ?>">
                                                 <label class="form-check-label" for="inlineRadio1"><?php _e($instructor_metadata['first_name'][0]." ".$instructor_metadata['last_name'][0]); ?></label>
                                             </div>
                                         <?php
@@ -226,8 +226,6 @@ class Course_Archive_Style{
                                     </div>
                                 </div>
                                 <!-- Card back face end -->
-
-
                             </div>
                         </div>                            
                     <?php
