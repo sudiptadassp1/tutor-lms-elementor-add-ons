@@ -128,13 +128,6 @@ class Elementor_Helper{
         $sort_by = $_POST["sortby"];
         $category = $_POST["category"];
         $instructor = $_POST["instructor"];
-        $course_per_page = $_POST["course_per_page"];
-        $course_grid_column = 12/($_POST["course_grid_column"]);
-        $front_title_align = $_POST["front_title_align"];
-        $front_instructor_align = $_POST["front_instructor_align"];
-        $back_title_align = $_POST["back_title_align"];
-        $back_instructor_align = $_POST["back_instructor_align"];
-        $button_title = $_POST["button_title"];
 
         if(!empty($category)){
             $args = array(
@@ -168,7 +161,9 @@ class Elementor_Helper{
         $users_data = self::get_instructor();
         $course_id = "";
         $course_terms = self::get_course_terms();
+        $course_count = $course_query_data->found_posts;
 
+        _e("<span class='course_count'>We found <b>".$course_count."</b> courses available for you</span>");
         if ( $course_query_data->have_posts() ) :
             while ( $course_query_data->have_posts() ) : $course_query_data->the_post();
                 $course_id = get_the_ID();
@@ -188,7 +183,7 @@ class Elementor_Helper{
                 }   
                 
                 ?>
-                    <div class="col-sm-<?php _e($course_grid_column); ?> course_card <?php
+                    <div class="col-sm-4 course_card <?php
                             foreach($course_categories as $course_category){
                                 _e($course_category->slug." ");
                             }
@@ -214,11 +209,11 @@ class Elementor_Helper{
                                             }
                                         ?>
                                     </div>
-                                    <h3 class="card-title front-title" style="text-align: <?php _e($front_title_align); ?>"><?php the_title(); ?></h3>
+                                    <h3 class="card-title front-title"><?php the_title(); ?></h3>
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <?php
-                                                self::get_instructor_name($course_instructors, $front_instructor_align);
+                                                self::get_instructor_name($course_instructors, "left");
                                             ?> 
                                         </div>
                                     </div>
@@ -259,7 +254,7 @@ class Elementor_Helper{
                                             }
                                         ?>
                                     </h5>
-                                    <h3 class="back card-title course_back_face back_title" style="text-align: <?php _e($back_title_align); ?>"><?php the_title(); ?></h3>
+                                    <h3 class="back card-title course_back_face back_title"><?php the_title(); ?></h3>
                                     <div class="back_course_excerpt course_back_face">
                                         <?php the_excerpt(); ?>
                                     </div>
@@ -267,7 +262,7 @@ class Elementor_Helper{
                                     <div class="row">
                                         <div class="col-sm-6 back_course_instructor course_back_face">
                                             <?php 
-                                                self::get_instructor_name($course_instructors, $back_instructor_align);
+                                                self::get_instructor_name($course_instructors, "left");
                                             ?>
                                         </div>
                                         <div class="col-sm-6">
@@ -291,7 +286,7 @@ class Elementor_Helper{
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <a href="<?php _e(get_permalink($course_id)); ?>" class="course_details"><?php _e($button_title, 'tutor'); ?></a>
+                                            <a href="<?php _e(get_permalink($course_id)); ?>" class="course_details">Details</a>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="course_back_face back_course_fee"><?php _e($course_price, 'tutor'); ?></div>

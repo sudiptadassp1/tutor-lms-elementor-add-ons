@@ -27,10 +27,10 @@ final class Tutor_Elementor_addon {
 	public function __construct() {
 		require_once(TUTOR_BASE_DIR.'elementor/helper.php');
 		add_action( 'plugins_loaded', [ $this, 'on_plugins_loaded' ] );
-		add_action( 'admin_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
+		// add_action( 'admin_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
+		// add_action( 'wp_enqueue_scripts', array( $this, 'tutor_enqueue_scripts' ) );
 		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'editor_style' ) );
-		add_action( 'init', array( $this, 'ajax_script_enqueuer' ));
+		//add_action( 'init', array( $this, 'ajax_script_enqueuer' ));
 		new Elementor_Helper();
 	}
 
