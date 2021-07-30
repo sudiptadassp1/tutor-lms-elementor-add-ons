@@ -15,6 +15,8 @@
     --pinterest: #3b5998;
     --youtube: #c4302b;
     --skype: #00aff0;
+    --tumblr: #001835;
+    --linkedin: #0077b5;
     --transition: 0.3s ease-in-out;
     --color_1: #f013a5;
     --color_2: #7013f0;
@@ -1284,13 +1286,15 @@ Single Course Template
 }
 
 .tutor-single-course-sidebar .price {
-    text-align: center;
+    text-align: left;
+    margin-bottom: 15px;
 }
 
 .single_course_side_block_1 {
     box-shadow: 0 0 4px 1px #c7c7c7;
     padding: 30px;
     border-radius: 10px;
+    margin-bottom: 30px;
 }
 
 .single_course_side_block_1 ul li {
@@ -1347,5 +1351,149 @@ span.course_cat {
 
 #single_sidebar_course_share {
     margin-top: 15px;
+}
+
+div#single_sidebar_course_share button.tutor_share {
+    margin: 0 15px;
+    padding: 8px 14px;
+    border-radius: 50px;
+}
+
+div#single_sidebar_course_share button.s_facebook{
+    border: solid 1px var(--facebook);
+    background-color: var(--facebook);
+}
+
+div#single_sidebar_course_share button.s_twitter{
+    border: solid 1px var(--twitter);
+    background-color: var(--twitter);
+}
+
+div#single_sidebar_course_share button.s_linkedin{
+    border: solid 1px var(--linkedin);
+    background-color: var(--linkedin);
+}
+
+div#single_sidebar_course_share button.s_tumblr{
+    border: solid 1px var(--tumblr);
+    background-color: var(--tumblr);
+}
+
+div#single_sidebar_course_share button.tutor_share:hover{
+    background-color: #ffffff;
+}
+
+div#single_sidebar_course_share button.s_facebook:hover i{
+    color: var(--facebook);
+}
+
+div#single_sidebar_course_share button.s_twitter:hover i{
+    color: var(--twitter);
+}
+
+div#single_sidebar_course_share button.s_linkedin:hover i{
+    color: var(--linkedin);
+}
+
+div#single_sidebar_course_share button.s_tumblr:hover i{
+    color: var(--tumblr);
+}
+
+.widget-course-category ul li {
+    margin-top: 5px;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+    font-family: var(--font_family_heading);
+}
+.widget-course-category ul li a {
+    line-height: 35px;
+    display: block;
+    color: var(--color_text_heading);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.widget-course-category ul li a span {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #6b6b6b;
+    font-size: 16px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.widget-course-category ul li a:hover {
+    color: var(--color_primary);
+}
+
+.widget-section-heading .widget-title {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.widget-related-course ul > li {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.widget-related-course ul > li .left-box {
+    display: inline-block;
+    max-width: 100px;
+    width: 100%;
+    border-radius: 5px;
+}
+.widget-related-course ul > li .left-box .item-figure {
+    display: block;
+    border-radius: 5px;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.widget-related-course ul > li .left-box .item-figure img {
+    border-radius: 5px;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.widget-related-course ul > li .media-body {
+    margin-left: 15px;
+}
+
+.widget-related-course ul > li .price {
+    color: var(--color_primary);
+}
+
+.widget-related-course ul > li .entry-title {
+    line-height: 22px;
+    line-height: 1.3;
+    margin-bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.widget-related-course ul > li .entry-title a {
+    color: var(--color_text_heading);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.single_course_side_block_1 button.tutor-button:focus-visible, div#single_sidebar_course_share button.tutor_share:focus-visible {
+    outline-color: unset;
 }
 /* Single Course Template End */

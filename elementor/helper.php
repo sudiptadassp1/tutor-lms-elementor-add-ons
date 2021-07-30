@@ -128,12 +128,15 @@ class Elementor_Helper{
         $sort_by = $_POST["sortby"];
         $category = $_POST["category"];
         $instructor = $_POST["instructor"];
+        $price = $_POST["price"];
 
         if(!empty($category)){
             $args = array(
                 'post_type' => 'courses',
                 'posts_per_page' => -1, 
                 'orderby' => 'date',
+                'meta_key' => '_tutor_course_price_type',
+                'meta_value'   => $price,
                 'order'   => $sort_by,
                 'author__in' => $instructor,
                 'tax_query' => array(
@@ -149,6 +152,8 @@ class Elementor_Helper{
                 'post_type' => 'courses',
                 'posts_per_page' => -1, 
                 'orderby' => 'date',
+                'meta_key' => '_tutor_course_price_type',
+                'meta_value'   => $price,
                 'order'   => $sort_by,
                 'author__in' => $instructor,            
             );
@@ -316,5 +321,58 @@ class Elementor_Helper{
         die();
     }
 
+
+    public static function related_course($post_cat){
+        if($post_cat){
+            $category = array();
+            foreach($post_cat as $categories){
+                array_push($category, $categories->term_id);
+            }
+            $args = array(
+                'post_type' => 'courses',
+                'posts_per_page' => 4, 
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'course-category',
+                        'field'    => 'term_id',
+                        'terms'    => $category,
+                    ),
+                ),            
+            );
+
+            $rel_post_query = new WP_Query( $args );
+            
+            ?>
+                <div class="single_course_side_block_1">
+                    <div class="widget-related-course">
+                        <div class="widget-section-heading heading-dark">
+                            <h3 class="widget-title">Related Courses</h3>
+                        </div>
+                        <ul class="block-list list-item">
+                            <?php
+                                if( $rel_post_query->have_posts() ) {
+                                    while ($rel_post_query->have_posts()) : $rel_post_query->the_post(); ?>
+                                        <li class="media">
+                                            <div class="left-box">
+                                                <a href="<?php the_permalink() ?>" class="item-figure"><img src="<?php _e(get_the_post_thumbnail_url(get_the_id())); ?>" alt="Course" width="100" height="80"></a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h3 class="entry-title">
+                                                    <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+                                                </h3>
+                                            </div>
+                                        </li>
+                                    <?php
+                                    endwhile;
+                                }
+                                    wp_reset_query();
+                            ?>
+                            
+                        </ul>
+                    </div>
+                </div>
+            <?php
+        }
+    }
 
 }

@@ -1,4 +1,4 @@
-function course_ajax_filter(sortby, category, instructor){
+function course_ajax_filter(sortby, category, instructor, price){
     jQuery.ajax({
         type : "post",
         url : myAjax.ajaxurl,
@@ -7,6 +7,7 @@ function course_ajax_filter(sortby, category, instructor){
             sortby : sortby, 
             category : category, 
             instructor : instructor, 
+            price: price,
         },
         beforeSend: function() {
             jQuery("course_block").html("<div class='loader_text'>Loading...</div>");
@@ -25,6 +26,7 @@ jQuery(document).ready(function(){
     var sortby = "";
     var category = [];
     var instructor = [];
+    var price = "";
     
     jQuery('.form-check-input').click(function(){
         if(jQuery(this).attr('data-var') == "sortby"){
@@ -56,11 +58,18 @@ jQuery(document).ready(function(){
                     }
                 }
             }
+        }else if(jQuery(this).attr('data-var') == "price"){
+            if(jQuery(this).is(":checked")){
+                price = jQuery(this).attr('data-id');
+            }else{
+                price = "";
+            }
+            
         }
 
         // console.log(sortby+"  "+category+" "+instructor);
-        course_ajax_filter(sortby, category, instructor);
+        course_ajax_filter(sortby, category, instructor, price);
     });
-    course_ajax_filter(sortby, category, instructor);
+    course_ajax_filter(sortby, category, instructor, price);
     
 });
