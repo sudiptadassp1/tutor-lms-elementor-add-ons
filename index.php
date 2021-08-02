@@ -16,6 +16,10 @@ if ( ! class_exists('Tutor_Elementor_addon') ) {
 	include_once 'elementor/init.php';
 }
 
+if ( ! class_exists('Customizer_control') ) {
+	include_once 'customizer/init.php';
+}
+
 add_action( 'wp_enqueue_scripts', 'tutor_enqueue_scripts' );
 add_action( 'admin_enqueue_scripts', 'tutor_enqueue_scripts' );
 add_action( 'init', 'ajax_script_enqueuer');
@@ -37,5 +41,13 @@ function ajax_script_enqueuer() {
 	wp_localize_script( 'ajax_script', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
  
 	wp_enqueue_script( 'ajax_script' );
- 
  }
+
+// Override tutor templates
+function tutor_template_load($template_location, $template){
+	$template_location = __DIR__."/tutor/{$template}.php";
+	return $template_location;
+}
+
+add_filter("tutor_get_template_path", "tutor_template_load", 10, 2);
+

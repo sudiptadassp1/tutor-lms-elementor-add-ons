@@ -1060,6 +1060,10 @@ Course Archive Widget
 
 /* Course Archive Widget Start */
 
+.post-type-archive-courses .tutor-notice-warning {
+    display: none;
+}
+
 nav.course_archive_pagination ul {
     list-style: none;
     display: flex;
@@ -1090,9 +1094,6 @@ nav.course_archive_pagination ul li:hover a {
     box-shadow: 0 0 10px 0px #d0d0d0;
     border-radius: 10px;
     padding: 15px 40px;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
     background-color: white;
 }
 

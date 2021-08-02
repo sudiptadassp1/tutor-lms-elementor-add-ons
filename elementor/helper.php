@@ -5,7 +5,7 @@ use WP_Query;
 class Elementor_Helper{
     public function __construct(){
         add_action("wp_ajax_course_filter", array( $this, 'ajax_course_filter' ));
-        add_action("wp_ajax_nopriv_course_filter", array( $this, 'ajax_course_filter_nopriv' ));
+        add_action("wp_ajax_nopriv_course_filter", array( $this, 'ajax_course_filter' ));
     }
     public static function get_course_terms($empty = true){
         $terms = get_terms( array( 
