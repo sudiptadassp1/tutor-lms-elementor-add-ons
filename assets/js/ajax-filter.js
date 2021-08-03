@@ -1,4 +1,4 @@
-function course_ajax_filter(sortby, category, instructor, price){
+function course_ajax_filter(sortby, category, instructor, price, archive_style){
     jQuery.ajax({
         type : "post",
         url : myAjax.ajaxurl,
@@ -8,16 +8,20 @@ function course_ajax_filter(sortby, category, instructor, price){
             category : category, 
             instructor : instructor, 
             price: price,
+            style: archive_style
         },
         beforeSend: function() {
-            jQuery("course_block").html("<div class='loader_text'>Loading...</div>");
+            jQuery('.ajax-loader').show();
         },
         success: function(response) {
-           jQuery('.course_grid').empty();
-           jQuery('.course_grid').append(response);
+            jQuery('.course_grid_archive').empty();
+            jQuery('.course_grid_archive').append(response);  
+            var total_course = jQuery('.ajax_course_count').val();
+            jQuery('.course_archive.course_count').empty();
+            jQuery('.course_archive.course_count').last().append("We found <b>"+total_course+"</b> courses available for you");         
         },
         complete: function(){
-            jQuery(".course_block .loader_text").remove();
+            jQuery('.ajax-loader').hide();
         }
      }) 
 }
@@ -27,6 +31,7 @@ jQuery(document).ready(function(){
     var category = [];
     var instructor = [];
     var price = "";
+    var archive_style = jQuery('.archive_style').val();
     
     jQuery('.form-check-input').click(function(){
         if(jQuery(this).attr('data-var') == "sortby"){
@@ -68,8 +73,8 @@ jQuery(document).ready(function(){
         }
 
         // console.log(sortby+"  "+category+" "+instructor);
-        course_ajax_filter(sortby, category, instructor, price);
+        course_ajax_filter(sortby, category, instructor, price, archive_style);
     });
-    course_ajax_filter(sortby, category, instructor, price);
+    course_ajax_filter(sortby, category, instructor, price, archive_style);
     
 });

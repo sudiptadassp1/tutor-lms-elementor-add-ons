@@ -23,7 +23,8 @@ class Customizer_control{
         // Course Archive Template
         $wp_customize->add_setting('course_archive_template_settings', array(
             'default'  => __("c_style_1"),
-            'type'     => 'option',
+            'type'     => 'theme_mod',
+            'transport' => 'refresh',
         ));   
 
         $wp_customize->add_control('course_archive_template_control', array(
@@ -32,17 +33,18 @@ class Customizer_control{
             'settings' => "course_archive_template_settings",
             'type'  => "select",
             'choices'    => array(
-                'c_style_1' => 'Style 1',
-                'c_style_2' => 'Style 2',
-                'c_style_3' => 'Style 3',
-                'c_style_4' => 'Style 4',
+                'archive_style_1' => 'Style 1',
+                'archive_style_2' => 'Style 2',
+                'archive_style_3' => 'Style 3',
+                'archive_style_4' => 'Style 4',
             ),
         ));   
         
         // Single Course Template
         $wp_customize->add_setting('single_course_template_settings', array(
-            'default'  => __("c_style_1"),
-            'type'     => 'option',
+            'default'  => __("cs_style_1"),
+            'type'     => 'theme_mod',
+            'transport' => 'refresh',
         ));   
 
         $wp_customize->add_control('single_course_template_control', array(
@@ -51,10 +53,10 @@ class Customizer_control{
             'settings' => "single_course_template_settings",
             'type'  => "select",
             'choices'    => array(
-                'c_style_1' => 'Style 1',
-                'c_style_2' => 'Style 2',
-                'c_style_3' => 'Style 3',
-                'c_style_4' => 'Style 4',
+                'single_style_1' => 'Style 1',
+                'single_style_2' => 'Style 2',
+                'single_style_3' => 'Style 3',
+                'single_style_4' => 'Style 4',
             ),
         ));
     }
