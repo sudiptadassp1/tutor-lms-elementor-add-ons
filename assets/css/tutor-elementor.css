@@ -79,6 +79,13 @@ Course Widget
     box-shadow: 0px 0px 6px 0px #cacaca;
     height: 500px;
 }
+
+.course_archive_style_4 .card{
+    border: unset !important;
+    border-radius: 10px !important;
+    box-shadow: 0px 0px 6px 0px #cacaca;
+    height: unset !important;
+}
 .course_grid img.course_thumbnail_image, .course_archive_style_1 img.course_thumbnail_image {
     padding: 1.25rem;
 }
@@ -1689,5 +1696,83 @@ Course Archive Style 2
 .archive_style_3_and_4 span.course_count{
     position: relative;
     margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 /* Course Archive Style 2 End */
+
+/* 
+===========================
+Course Archive Style 3 & 4
+===========================
+*/
+
+/* Course Archive Style 3 & 4 Start */
+
+.card.course_side_filter {
+    width: 100%;
+    margin: 10px 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 4px 0px #a6a6a6;
+    border: unset;
+    padding: 0 25px;
+}
+
+.course_archive_style_4 img.course_thumbnail_image {
+    padding: 0;
+    position: relative;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.course_archive_style_4 .front_excerpt p {
+    padding-left: 15px;
+}
+.course_archive_style_4 .course_lesson_details .course-feature {
+    padding-left: 15px;
+}
+.course_archive_style_4 .instructor_name{
+    font-weight: 800;
+    margin-top: -5px;
+}
+
+.course_archive_style_4 ul.course_back_face.course-feature li a img.tutor-image-avatar {
+    width: 35px;
+    border-radius: 50px;
+}
+
+.course_archive_style_4 ul.course_footer_style_4 {
+    list-style: none;
+    display: flex;
+    padding: 0;
+}
+
+.course_archive_style_4 ul.course_footer_style_4 li {
+    margin-right: 50px;
+}
+
+.course_archive_style_4 .card_backend .course_back_face.course-feature{
+    padding: 0 15px;
+}
+
+.course_archive_style_4 h5.back_course_category.course_back_face {
+    margin-bottom: 0;
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.course_archive_style_4 .card-body.back.course_back_face{
+    padding: 2.50rem;
+}
+
+.course_archive_style_4 h5.back_course_category.course_back_face::before {
+    content: "--";
+}
+
+.course_archive_style_4 ul.course_footer_style_4 li .course_fee {
+    font-size: 25px;
+    font-weight: 800;
+}
+/* Course Archive Style 3 & 4 End */

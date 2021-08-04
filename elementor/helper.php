@@ -190,7 +190,6 @@ class Elementor_Helper{
                 $course_instructors = tutor_utils()->get_instructors_by_course($course_id);
                 $course_duration = get_tutor_course_duration_context($course_id);
                 
-
                 if(strtolower($course_meta['_tutor_course_price_type'][0])=="free"){
                     $course_price = "Free";
                     $courses_price_class = "free_course";
@@ -199,7 +198,7 @@ class Elementor_Helper{
                     $courses_price_class = "paid_course";
                 }  
                  
-                if(($archive_style == "archive_style_1") || ($archive_style == "archive_style_3") || ($archive_style == "archive_style_4")){
+                if(($archive_style == "archive_style_1") || ($archive_style == "archive_style_3")){
                     ?>
                         <div class="col-lg-<?php
                             if($archive_style == "archive_style_1"){
@@ -367,6 +366,131 @@ class Elementor_Helper{
                                     </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    <?php
+                }else if($archive_style == "archive_style_4"){
+                    ?>
+                        <div class="col-lg-12 col-md-12 col-sm-12 course_archive_style_1 course_archive_style_4">
+                            <div class="course_card">
+                                <div class="card" style="width: 100%; margin-bottom: 35px;">
+                                    <!-- Card front face start -->
+                                    <div class="card_front_face">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                                    <img class="course_thumbnail_image" src="<?php echo get_the_post_thumbnail_url($course_id); ?>" class="card-img-top" alt="...">
+                                                </div>
+                                                <div class="col-lg-8 col-md-6 col-sm-12">
+                                                    <div class="course_category category_color_<?php _e($course_category_color_count); ?>"> 
+                                                    <?php
+                                                        $course_category_color_count += 1;
+                                                        if($course_category_color_count>5){
+                                                            $course_category_color_count = 1;
+                                                        }
+                                                        foreach($course_categories as $index=>$course_category){
+                                                            $Category_name_in_loop = $course_category->name;
+                                                            if($index > 0){
+                                                                $Category_name_in_loop = ", ".$Category_name_in_loop;
+                                                            }
+                                                            _e($Category_name_in_loop);
+                                                        }
+                                                    ?>
+                                                    </div>
+                                                    <h3 class="card-title front-title"><?php the_title(); ?></h3>
+                                                    <div class="row course_lesson_details">
+                                                        <ul class="inline-list course-feature">
+                                                            <li><i class="fas fa-file-excel"></i> <?php _e(tutor_utils()->get_lesson_count_by_course($course_id)." Lessons", "tutor"); ?></li>
+                                                            <li><i class="fas fa-briefcase"></i> Online Class</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="row front_excerpt">
+                                                        <?php the_excerpt(); ?>
+                                                    </div>
+                                                    <div class="single_course_footer">
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <?php
+                                                                    self::get_instructor_name($course_instructors, "left");
+                                                                ?> 
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="course-fee price-title"><?php _e($course_price, 'tutor'); ?></div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <?php
+                                                                    self::get_course_rating($course_id);
+                                                                ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                       
+                                    <!-- Card front face end -->
+
+                                    <!-- Card back face start -->
+                                    <div class="card_backend">
+                                        <div class="card-body back course_back_face">
+                                            <h5 class="back_course_category course_back_face">
+                                                <?php
+                                                    foreach($course_categories as $index=>$course_category){
+                                                        $Category_name_in_loop = $course_category->name;
+                                                        if($index > 0){
+                                                            $Category_name_in_loop = ", ".$Category_name_in_loop;
+                                                        }
+                                                        _e($Category_name_in_loop);
+                                                    }
+                                                ?>
+                                            </h5>
+                                            <h3 class="back card-title course_back_face back_title"><?php the_title(); ?></h3>
+                                            <div class="row">
+                                                <ul class="course_back_face course-feature">
+                                                    <li>
+                                                        <?php 
+                                                            self::get_instructor_name($course_instructors, "left", "image");
+                                                        ?>
+                                                    </li>
+                                                    <li>
+                                                        <?php
+                                                            self::get_instructor_name($course_instructors, "left");
+                                                        ?>
+                                                    </li>
+                                                    <li><i class="fas fa-bars"></i> <?php _e(tutor_utils()->get_lesson_count_by_course($course_id)." Lessons", "tutor"); ?></li>
+                                                    <li><i class="far fa-clock"></i> 
+                                                        <?php
+                                                            if($course_duration){
+                                                                _e($course_duration, 'tutor');
+                                                            }
+                                                        ?>
+                                                    </li>
+                                                    <li>
+                                                        <?php
+                                                            self::get_course_rating($course_id);
+                                                        ?>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="back_course_excerpt course_back_face">
+                                                <?php the_excerpt(); ?>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <ul class="course_footer_style_4">
+                                                        <li><a href="<?php _e(get_permalink($course_id)); ?>" class="course_details">See Details</a></li>
+                                                        <li><div class="course_fee"><?php _e($course_price, 'tutor'); ?></div></li>
+                                                    </ul>
+                                                    
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card back face end -->
+
+
+                                </div>  
                             </div>
                         </div>
                     <?php

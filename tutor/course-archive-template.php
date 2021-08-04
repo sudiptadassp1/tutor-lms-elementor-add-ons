@@ -118,7 +118,118 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12">ajfhvbdjvjdf</div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <!-- Sort By -->
+                            <div class="row">
+                                <div class="card course_side_filter">
+                                    <div class="card-body">
+                                        <div class="filter_panel_column">
+                                            <h5>Sort By</h5>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" data-var="sortby" name="inlineRadioOptions" data-id="DESC" id="sort_latest">
+                                                <label class="form-check-label" for="inlineRadio1"> Latest</label>
+                                            </div>
+                                        
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" data-var="sortby" name="inlineRadioOptions" data-id="ASC" id="sort_oldest">
+                                                <label class="form-check-label" for="inlineRadio1"> Oldest</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- By Category -->
+                            <div class="row">
+                                <div class="card course_side_filter">
+                                    <div class="card-body">
+                                        <div class="filter_panel_column">
+                                            <h5>Category</h5>
+                                            <?php
+                                                foreach($course_terms as $terms){
+                                                    ?>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" data-var="category" name="inlineRadioOptions" data-id="<?php _e($terms->slug) ?>" id="sort_<?php _e($terms->slug) ?>">
+                                                            <label class="form-check-label" for="inlineRadio1"><?php _e($terms->name); ?></label>
+                                                        </div>
+                                                    <?php
+                                                }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- By Instructor  -->
+                            <div class="row">
+                                <div class="card course_side_filter">
+                                    <div class="card-body">
+                                        <div class="filter_panel_column">
+                                            <h5>Instructor</h5>
+                                            <?php
+                                            foreach($users_data as $instructor){
+                                                $instructor_metadata = get_user_meta($instructor->id);
+                                                ?>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" data-var="instructor" name="inlineRadioOptions" data-id="<?php _e($instructor->id) ?>">
+                                                        <label class="form-check-label" for="inlineRadio1"><?php _e($instructor_metadata['first_name'][0]." ".$instructor_metadata['last_name'][0]); ?></label>
+                                                    </div>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- By Price -->
+                            <div class="row">
+                                <div class="card course_side_filter">
+                                    <div class="card-body">
+                                        <div class="filter_panel_column">
+                                            <h5>Price</h5>  
+                                            <div class="form-check">
+                                                <input class="form-check-input"  type="radio" name="price_option" data-var="price" data-id="">
+                                                <label class="form-check-label" for="inlineRadio1"> All</label>
+                                            </div>                          
+                                            <div class="form-check">
+                                                <input class="form-check-input"  type="radio" name="price_option" data-var="price" data-id="free">
+                                                <label class="form-check-label" for="inlineRadio1"> Free</label>
+                                            </div>
+                                        
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="price_option" data-var="price" data-id="paid">
+                                                <label class="form-check-label" for="inlineRadio1"> Paid</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- By Experties -->
+                            <!-- <div class="row">
+                                <div class="card course_side_filter">
+                                    <div class="card-body">
+                                        <div class="filter_panel_column">
+                                            <h5>Difficulty Level</h5>  
+                                            <div class="form-check">
+                                                <input class="form-check-input"  type="radio" name="difficulty" data-var="difficulty" data-id="">
+                                                <label class="form-check-label" for="inlineRadio1"> All Levels</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input"  type="radio" name="difficulty" data-var="difficulty" data-id="beginner">
+                                                <label class="form-check-label" for="inlineRadio1"> Beginner</label>
+                                            </div>                          
+                                            <div class="form-check">
+                                                <input class="form-check-input"  type="radio" name="difficulty" data-var="difficulty" data-id="intermediate">
+                                                <label class="form-check-label" for="inlineRadio1"> Intermediate</label>
+                                            </div>
+                                        
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="difficulty" data-var="difficulty" data-id="expert">
+                                                <label class="form-check-label" for="inlineRadio1"> Expert</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
                     </div>
                 </div>
             <?php
