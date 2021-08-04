@@ -1,4 +1,4 @@
-function course_ajax_filter(sortby, category, instructor, price, archive_style){
+function course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty){
     jQuery.ajax({
         type : "post",
         url : myAjax.ajaxurl,
@@ -8,7 +8,8 @@ function course_ajax_filter(sortby, category, instructor, price, archive_style){
             category : category, 
             instructor : instructor, 
             price: price,
-            style: archive_style
+            style: archive_style,
+            difficulty: difficulty,
         },
         beforeSend: function() {
             jQuery('.ajax-loader').show();
@@ -32,6 +33,7 @@ jQuery(document).ready(function(){
     var instructor = [];
     var price = "";
     var archive_style = jQuery('.archive_style').val();
+    var difficulty = "";
     
     jQuery('.form-check-input').click(function(){
         if(jQuery(this).attr('data-var') == "sortby"){
@@ -70,11 +72,18 @@ jQuery(document).ready(function(){
                 price = "";
             }
             
+        }else if(jQuery(this).attr('data-var') == "difficulty"){
+            if(jQuery(this).is(":checked")){
+                difficulty = jQuery(this).attr('data-id');
+            }else{
+                difficulty = "";
+            }
+            
         }
 
         // console.log(sortby+"  "+category+" "+instructor);
-        course_ajax_filter(sortby, category, instructor, price, archive_style);
+        course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty);
     });
-    course_ajax_filter(sortby, category, instructor, price, archive_style);
+    course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty);
     
 });

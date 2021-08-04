@@ -143,13 +143,14 @@ class Elementor_Helper{
         $instructor = $_POST["instructor"];
         $price = $_POST["price"];
         $archive_style = $_POST["style"];
+        $difficulty =  $_POST["difficulty"];
+        // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         if(!empty($category)){
             $args = array(
                 'post_type' => 'courses',
+                // 'paged' => $paged,
                 'posts_per_page' => -1, 
                 'orderby' => 'date',
-                'meta_key' => '_tutor_course_price_type',
-                'meta_value'   => $price,
                 'order'   => $sort_by,
                 'author__in' => $instructor,
                 'tax_query' => array(
@@ -158,17 +159,42 @@ class Elementor_Helper{
                         'field'    => 'slug',
                         'terms'    => $category,
                     ),
+                ),
+                'meta_query' => array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => '_tutor_course_price_type',
+                        'value'    => $price,
+                        'compare'    => 'LIKE',
+                    ),
+                    array(
+                        'key' => '_tutor_course_level',
+                        'value' => $difficulty,
+                        'compare' => 'LIKE',
+                    ),
                 ),            
             );
         }else{
             $args = array(
                 'post_type' => 'courses',
                 'posts_per_page' => -1, 
+                // 'paged' => $paged,
                 'orderby' => 'date',
-                'meta_key' => '_tutor_course_price_type',
-                'meta_value'   => $price,
                 'order'   => $sort_by,
-                'author__in' => $instructor,            
+                'author__in' => $instructor,
+                'meta_query' => array(
+                    'relation' => 'AND',
+                    array(
+                        'key' => '_tutor_course_price_type',
+                        'value'    => $price,
+                        'compare'    => 'LIKE',
+                    ),
+                    array(
+                        'key' => '_tutor_course_level',
+                        'value' => $difficulty,
+                        'compare' => 'LIKE',
+                    ),
+                ),           
             );
         }
         
@@ -189,7 +215,7 @@ class Elementor_Helper{
                 $course_categories = get_the_terms($course_id, TUTOR_TAXONOMY);
                 $course_instructors = tutor_utils()->get_instructors_by_course($course_id);
                 $course_duration = get_tutor_course_duration_context($course_id);
-                
+
                 if(strtolower($course_meta['_tutor_course_price_type'][0])=="free"){
                     $course_price = "Free";
                     $courses_price_class = "free_course";
@@ -500,7 +526,14 @@ class Elementor_Helper{
         else :
             _e( '<div class="alert alert-warning text-center empty_course_alert" role="alert"> Sorry!!!  No Course Found for you. </div>', 'tutor' );
         endif;
-
+        ?>
+            <!-- <nav>
+                <ul>
+                    <li><?php previous_posts_link( '&laquo; PREV', $course_query_data->max_num_pages) ?></li> 
+                    <li><?php next_posts_link( 'NEXT &raquo;', $course_query_data->max_num_pages) ?></li>
+                </ul>
+            </nav> -->
+        <?php
 
         die();
     }

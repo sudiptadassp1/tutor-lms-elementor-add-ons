@@ -56,7 +56,6 @@ class Customizer_control{
                 'single_style_1' => 'Style 1',
                 'single_style_2' => 'Style 2',
                 'single_style_3' => 'Style 3',
-                'single_style_4' => 'Style 4',
             ),
         ));
     }

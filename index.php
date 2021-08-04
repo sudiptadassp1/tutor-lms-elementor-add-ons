@@ -41,8 +41,6 @@ function ajax_script_enqueuer() {
 	wp_localize_script( 'ajax_script', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));        
  
 	wp_enqueue_script( 'ajax_script' );
-	// echo get_theme_mod('course_archive_template_settings');
-	// echo "<br/>".get_theme_mod('single_course_template_settings');
  }
 
 // Override tutor templates

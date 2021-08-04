@@ -1160,8 +1160,6 @@ nav.course_archive_pagination ul li:hover a {
 }
 
 span.course_count {
-    position: absolute;
-    top: 10px;
     left: 12px;
     font-size: 18px;
 }
@@ -1179,9 +1177,7 @@ Single Course Template
 /* Single Course Template Start */
 
 .banner-info-style-1 {
-    background-color: #edf6ff;
     padding-bottom: 100px;
-    padding-top: 50px;
 }
 
 .banner-info-style-1 .content-box {
@@ -1514,6 +1510,28 @@ div#single_sidebar_course_share button.s_tumblr:hover i{
 .single_course_side_block_1 button.tutor-button:focus-visible, div#single_sidebar_course_share button.tutor_share:focus-visible {
     outline-color: unset;
 }
+
+.single_banner_style_1{
+    background-color: #edf6ff;
+}
+.single_banner_style_2{
+    background-color: var(--color_primary);
+}
+
+.single_banner_style_2 .single_course_breadcrum a, .single_banner_style_2 .single_course_breadcrum, .single_banner_style_2 .title, .single_banner_style_2 .content-box p, .single_banner_style_2 .list-info li{
+    color: #ffffff;
+}
+
+.single_banner_style_3{
+    background-color: #fff;
+}
+
+.single_banner_style_3 .single_course_breadcrum {
+    background-color: #ebf4fd;
+}
+.single_course_breadcrum{
+    padding: 40px;
+}
 /* Single Course Template End */
 
 /* 
@@ -1774,5 +1792,17 @@ Course Archive Style 3 & 4
 .course_archive_style_4 ul.course_footer_style_4 li .course_fee {
     font-size: 25px;
     font-weight: 800;
+}
+
+.single_course_breadcrum {
+    color: #9e9e9e;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.single_course_breadcrum a {
+    font-weight: 600;
 }
 /* Course Archive Style 3 & 4 End */

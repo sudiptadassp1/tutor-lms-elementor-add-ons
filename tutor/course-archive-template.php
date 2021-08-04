@@ -20,8 +20,8 @@
                             </div>
                         </div>
                         <hr/>
-                        <div class="filter_panel row">
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="filter_panel row row-cols-sm-12 row-cols-md-6 row-cols-lg-5">
+                            <div class="col">
                                 <!-- Sort By -->
                                 <div class="filter_panel_column">
                                     <h5>Sort By</h5>
@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="col">
                                 <!-- Category -->
                                 <div class="filter_panel_column">
                                     <h5>Category</h5>
@@ -52,7 +52,7 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="col">
                                 <!-- Instructor -->
                                 <div class="filter_panel_column">
                                     <h5>Instructor</h5>
@@ -69,7 +69,7 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="col">
                                 <!-- Price -->
                                 <div class="filter_panel_column">
                                     <h5>Price</h5>  
@@ -85,6 +85,30 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="price_option" data-var="price" data-id="paid">
                                         <label class="form-check-label" for="inlineRadio1"> Paid</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <!-- Difficulty -->
+                                <div class="filter_panel_column">
+                                    <h5>Difficulty Level</h5>  
+                                    <div class="form-check">
+                                        <input class="form-check-input"  type="radio" name="difficulty" data-var="difficulty" data-id="">
+                                        <label class="form-check-label" for="inlineRadio1"> All Levels</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input"  type="radio" name="difficulty" data-var="difficulty" data-id="beginner">
+                                        <label class="form-check-label" for="inlineRadio1"> Beginner</label>
+                                    </div>                          
+                                    <div class="form-check">
+                                        <input class="form-check-input"  type="radio" name="difficulty" data-var="difficulty" data-id="intermediate">
+                                        <label class="form-check-label" for="inlineRadio1"> Intermediate</label>
+                                    </div>
+                                
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="difficulty" data-var="difficulty" data-id="expert">
+                                        <label class="form-check-label" for="inlineRadio1"> Expert</label>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +227,7 @@
                                 </div>
                             </div>
                             <!-- By Experties -->
-                            <!-- <div class="row">
+                            <div class="row">
                                 <div class="card course_side_filter">
                                     <div class="card-body">
                                         <div class="filter_panel_column">
@@ -228,7 +252,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
