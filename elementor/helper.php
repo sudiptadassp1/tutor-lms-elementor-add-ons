@@ -144,12 +144,14 @@ class Elementor_Helper{
         $price = $_POST["price"];
         $archive_style = $_POST["style"];
         $difficulty =  $_POST["difficulty"];
+        $ppp =  $_POST["ppp"];
+        $offset =  $_POST["offset"];
         // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
         if(!empty($category)){
             $args = array(
                 'post_type' => 'courses',
-                // 'paged' => $paged,
-                'posts_per_page' => -1, 
+                'offset' => $offset,
+                'posts_per_page' => $ppp, 
                 'orderby' => 'date',
                 'order'   => $sort_by,
                 'author__in' => $instructor,
@@ -177,8 +179,8 @@ class Elementor_Helper{
         }else{
             $args = array(
                 'post_type' => 'courses',
-                'posts_per_page' => -1, 
-                // 'paged' => $paged,
+                'posts_per_page' => $ppp, 
+                'offset' => $offset,
                 'orderby' => 'date',
                 'order'   => $sort_by,
                 'author__in' => $instructor,
@@ -526,23 +528,9 @@ class Elementor_Helper{
         else :
             _e( '<div class="alert alert-warning text-center empty_course_alert" role="alert"> Sorry!!!  No Course Found for you. </div>', 'tutor' );
         endif;
-        ?>
-            <!-- <nav>
-                <ul>
-                    <li><?php previous_posts_link( '&laquo; PREV', $course_query_data->max_num_pages) ?></li> 
-                    <li><?php next_posts_link( 'NEXT &raquo;', $course_query_data->max_num_pages) ?></li>
-                </ul>
-            </nav> -->
-        <?php
 
         die();
     }
-
-    public function ajax_course_filter_nopriv(){
-        echo "No priview";
-        die();
-    }
-
 
     public static function related_course($post_cat){
         if($post_cat){
@@ -598,3 +586,6 @@ class Elementor_Helper{
     }
 
 }
+
+
+                      

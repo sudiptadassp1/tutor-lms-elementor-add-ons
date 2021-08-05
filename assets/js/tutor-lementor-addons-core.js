@@ -12,6 +12,7 @@ jQuery(document).ready(function(){
         col_grid.isotope({ filter: filterValue });
         jQuery(this).addClass('active').siblings().removeClass('active');
     });
+
 });
 
 

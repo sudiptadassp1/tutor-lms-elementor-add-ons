@@ -119,6 +119,9 @@
                 <div class="row">
                     <div class="archive course_block">
                         <div class="row course_grid_archive"></div>
+                        <div class="row load_more_button justify-content-center">
+                            <button class="load_more_btn">Load More</button>
+                        </div>
                         <div class="ajax-loader">
                             <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ).'assets/media/loader.gif'; ?>" class="img-responsive" />
                         </div>
@@ -136,6 +139,9 @@
                             <div class="row">
                                 <div class="archive course_block">
                                     <div class="row course_grid_archive"></div>
+                                    <div class="row load_more_button justify-content-center">
+                                        <button class="load_more_btn">Load More</button>
+                                    </div>
                                     <div class="ajax-loader">
                                         <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ).'assets/media/loader.gif'; ?>" class="img-responsive" />
                                     </div>
@@ -261,3 +267,5 @@
     ?>
     
 </div>
+
+ 

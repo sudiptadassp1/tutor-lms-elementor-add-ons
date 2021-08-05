@@ -1805,4 +1805,22 @@ Course Archive Style 3 & 4
 .single_course_breadcrum a {
     font-weight: 600;
 }
+
+.load_more_button button.load_more_btn {
+    padding: 10px 50px;
+    border-radius: 50px;
+    background-image: linear-gradient(45deg, #0071dc, #ed00ff);
+}
+
+.load_more_button {
+    margin: 40px;
+}
+
+button.load_more_btn:focus {
+    outline: 0;
+}
+
+button.load_more_btn:hover {
+    background-image: linear-gradient(45deg, #004b92, #ac00b9);
+}
 /* Course Archive Style 3 & 4 End */

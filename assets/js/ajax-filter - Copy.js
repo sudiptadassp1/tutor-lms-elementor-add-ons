@@ -1,4 +1,4 @@
-function course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty, ppp = 2, offset = 0, pagination = 0){
+function course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty, ppp = 2, offset = 0){
     jQuery.ajax({
         type : "post",
         url : myAjax.ajaxurl,
@@ -17,25 +17,11 @@ function course_ajax_filter(sortby, category, instructor, price, archive_style, 
             jQuery('.ajax-loader').show();
         },
         success: function(response) {
-            // console.log(ppp+" "+offset+" "+pagination);
-            if(pagination == 1){
-                var res_data = "";
-                var res_data = res_data.concat(response);
-                jQuery('.course_grid_archive').append(response);  
-            }else{
-                jQuery('.course_grid_archive').empty();
-                jQuery('.course_grid_archive').append(response); 
-            }
-
-            
+            jQuery('.course_grid_archive').empty();
+            jQuery('.course_grid_archive').append(response);  
             var total_course = jQuery('.ajax_course_count').val();
             jQuery('.course_archive.course_count').empty();
-            jQuery('.course_archive.course_count').last().append("We found <b>"+total_course+"</b> courses available for you");
-
-        },
-        error: function (jqXHR, exception) {
-            flag = 0;
-            alert(jqXHR);
+            jQuery('.course_archive.course_count').last().append("We found <b>"+total_course+"</b> courses available for you");         
         },
         complete: function(){
             jQuery('.ajax-loader').hide();
@@ -44,9 +30,7 @@ function course_ajax_filter(sortby, category, instructor, price, archive_style, 
 }
 
 var ppp = 2;
-var g_offset = 2;
-var flag = 1;
-var pagination = 1;
+var offset = 2;
 
 jQuery(document).ready(function(){
     var sortby = "";
@@ -57,8 +41,6 @@ jQuery(document).ready(function(){
     var difficulty = "";
 
     jQuery('.form-check-input').click(function(){
-        g_offset = 2;
-        console.log("F: "+g_offset);
         if(jQuery(this).attr('data-var') == "sortby"){
             if(jQuery(this).is(":checked")){
                 sortby = jQuery(this).attr('data-id');
@@ -109,10 +91,7 @@ jQuery(document).ready(function(){
     });
 
     jQuery(".load_more_btn").click(function(){
-        course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty, ppp, g_offset, pagination);
-        if(flag == 1){
-            g_offset += ppp;
-        }
+        course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty, ppp, offset);
     });
 
     course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty);
