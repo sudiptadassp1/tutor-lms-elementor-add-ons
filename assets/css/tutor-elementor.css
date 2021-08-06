@@ -1287,6 +1287,7 @@ Single Course Template
 
 .single_course_body {
     padding-top: 80px;
+    padding-bottom: 50px;
 }
 
 .single_course_body h4.tutor-segment-title {
@@ -1368,9 +1369,13 @@ span.course_cat {
 }
 
 div#single_sidebar_course_share button.tutor_share {
-    margin: 0 15px;
+    margin: 0 10px;
     padding: 8px 14px;
     border-radius: 50px;
+}
+
+div#single_sidebar_course_share button.tutor_share:focus {
+    outline: 0;
 }
 
 div#single_sidebar_course_share button.s_facebook{
@@ -1828,3 +1833,21 @@ button.load_more_btn:hover {
     display: none;
 }
 /* Course Archive Style 3 & 4 End */
+
+/* 
+===========================
+Single Course Enroll
+===========================
+*/
+
+/* Single Course Enroll Start */
+
+.tutor-addons_single_course_enroll_box .tutor-single-lesson-segment.tutor-lesson-video-wrap {
+    display: none;
+}
+
+.tutor-addons_single_course_enroll_box .tutor-single-course-segment.tutor-course-material-includes-wrap {
+    display: none;
+}
+
+/* Single Course Enroll End */

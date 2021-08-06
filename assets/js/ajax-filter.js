@@ -20,7 +20,6 @@ function course_ajax_filter(sortby, tags, category, instructor, price, archive_s
             jQuery('.ajax-loader').show();
         },
         success: function(response) {
-            // console.log(ppp+" "+offset+" "+pagination);
             if(pagination == 1){
                 var res_data = "";
                 var res_data = res_data.concat(response);
@@ -34,7 +33,12 @@ function course_ajax_filter(sortby, tags, category, instructor, price, archive_s
             var total_course = jQuery('.ajax_course_count').val();
             jQuery('.course_archive.course_count').empty();
             jQuery('.course_archive.course_count').last().append("We found <b>"+total_course+"</b> courses available for you");
-
+            var offset_var_count = ppp +  offset;
+            if(offset_var_count < total_course){
+                jQuery('.load_more_btn').show();
+            }else{
+                jQuery('.load_more_btn').hide();
+            }
         },
         error: function (jqXHR, exception) {
             flag = 0;
@@ -121,7 +125,6 @@ jQuery(document).ready(function(){
             
         }
 
-        // console.log(sortby+"  "+category+" "+instructor);
         course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty);
     });
 
