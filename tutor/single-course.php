@@ -143,7 +143,6 @@ function single_banner_video_block(){
         <div class="tutor-row">
             <div class="tutor-col-8 tutor-col-md-100">
 	            <?php do_action('tutor_course/single/before/inner-wrap'); ?>
-                <?php //tutor_course_lead_info(); ?>
 	            <?php tutor_course_content(); ?>
 	            <?php tutor_course_benefits_html(); ?>
 	            <?php tutor_course_topics(); ?>

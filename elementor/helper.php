@@ -7,9 +7,9 @@ class Elementor_Helper{
         add_action("wp_ajax_course_filter", array( $this, 'ajax_course_filter' ));
         add_action("wp_ajax_nopriv_course_filter", array( $this, 'ajax_course_filter' ));
     }
-    public static function get_course_terms($empty = true){
+    public static function get_course_terms($empty = true, $term = "course-category"){
         $terms = get_terms( array( 
-            'taxonomy' => 'course-category',
+            'taxonomy' => $term,
             'parent'   => 0,
             'hide_empty' => $empty,
         ) );
@@ -139,67 +139,82 @@ class Elementor_Helper{
 
     public function ajax_course_filter(){
         $sort_by = $_POST["sortby"];
+        $tags = $_POST["tags"];
         $category = $_POST["category"];
         $instructor = $_POST["instructor"];
         $price = $_POST["price"];
         $archive_style = $_POST["style"];
+        $course_taxonomies = $_POST["course_taxonomies"];
+        $course_taxonomies_tags = $_POST["course_taxonomies_tags"];
         $difficulty =  $_POST["difficulty"];
         $ppp =  $_POST["ppp"];
         $offset =  $_POST["offset"];
-        // $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        if(!empty($category)){
-            $args = array(
-                'post_type' => 'courses',
-                'offset' => $offset,
-                'posts_per_page' => $ppp, 
-                'orderby' => 'date',
-                'order'   => $sort_by,
-                'author__in' => $instructor,
-                'tax_query' => array(
-                    array(
-                        'taxonomy' => 'course-category',
-                        'field'    => 'slug',
-                        'terms'    => $category,
-                    ),
+
+        if(!empty($course_taxonomies)){
+            $category = $course_taxonomies;
+        }
+
+        if(!empty($course_taxonomies_tags)){
+            $tags = $course_taxonomies_tags;
+        }
+
+
+        $args = array(
+            'post_type' => 'courses',
+            'posts_per_page' => $ppp, 
+            'offset' => $offset,
+            'orderby' => 'date',
+            'order'   => $sort_by,
+            'author__in' => $instructor,
+            'meta_query' => array(
+                'relation' => 'AND',
+                array(
+                    'key' => '_tutor_course_price_type',
+                    'value'    => $price,
+                    'compare'    => 'LIKE',
                 ),
-                'meta_query' => array(
-                    'relation' => 'AND',
-                    array(
-                        'key' => '_tutor_course_price_type',
-                        'value'    => $price,
-                        'compare'    => 'LIKE',
-                    ),
-                    array(
-                        'key' => '_tutor_course_level',
-                        'value' => $difficulty,
-                        'compare' => 'LIKE',
-                    ),
-                ),            
+                array(
+                    'key' => '_tutor_course_level',
+                    'value' => $difficulty,
+                    'compare' => 'LIKE',
+                ),
+            ),           
+        );
+
+        if(!empty($category) && !empty($tags)){
+            $args['tax_query'] = array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => 'course-category',
+                    'field'    => 'slug',
+                    'terms'    => $category,
+                ),
+                array(
+                    'taxonomy' => 'course-tag',
+                    'field'    => 'slug',
+                    'terms'    => $tags,
+                ),
+          
             );
-        }else{
-            $args = array(
-                'post_type' => 'courses',
-                'posts_per_page' => $ppp, 
-                'offset' => $offset,
-                'orderby' => 'date',
-                'order'   => $sort_by,
-                'author__in' => $instructor,
-                'meta_query' => array(
-                    'relation' => 'AND',
-                    array(
-                        'key' => '_tutor_course_price_type',
-                        'value'    => $price,
-                        'compare'    => 'LIKE',
-                    ),
-                    array(
-                        'key' => '_tutor_course_level',
-                        'value' => $difficulty,
-                        'compare' => 'LIKE',
-                    ),
-                ),           
+        } else if(!empty($category)){
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'course-category',
+                    'field'    => 'slug',
+                    'terms'    => $category,
+                ),
+          
+            );
+        }else  if(!empty($tags)){
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'course-tag',
+                    'field'    => 'slug',
+                    'terms'    => $tags,
+                ),
+          
             );
         }
-        
         
         $course_query_data = new WP_Query( $args );
         

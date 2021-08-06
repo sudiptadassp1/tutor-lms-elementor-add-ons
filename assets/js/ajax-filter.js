@@ -1,14 +1,17 @@
-function course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty, ppp = 2, offset = 0, pagination = 0){
+function course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty, ppp = 2, offset = 0, pagination = 0){
     jQuery.ajax({
         type : "post",
         url : myAjax.ajaxurl,
         data : {
             action: "course_filter", 
             sortby : sortby, 
+            tags:tags,
             category : category, 
             instructor : instructor, 
             price: price,
             style: archive_style,
+            course_taxonomies: course_taxonomies,
+            course_taxonomies_tags: course_taxonomies_tags,
             difficulty: difficulty,
             ppp: ppp,
             offset: offset,
@@ -51,9 +54,12 @@ var pagination = 1;
 jQuery(document).ready(function(){
     var sortby = "";
     var category = [];
+    var tags = [];
     var instructor = [];
     var price = "";
     var archive_style = jQuery('.archive_style').val();
+    var course_taxonomies = jQuery('.archive_course_taxonomy').val();
+    var course_taxonomies_tags = jQuery('.archive_course_taxonomy_tags').val();
     var difficulty = "";
 
     jQuery('.form-check-input').click(function(){
@@ -74,6 +80,17 @@ jQuery(document).ready(function(){
                     if ( category[i] === jQuery(this).attr('data-id')) { 
     
                         category.splice(i, 1); 
+                    }
+                }
+            }
+        }else if(jQuery(this).attr('data-var') == "tags"){
+            if(jQuery(this).is(":checked")){
+                tags.push(jQuery(this).attr('data-id'));
+            }else{
+                for(var i= 0; i< tags.length; i++){
+                    if ( tags[i] === jQuery(this).attr('data-id')) { 
+    
+                        tags.splice(i, 1); 
                     }
                 }
             }
@@ -105,16 +122,16 @@ jQuery(document).ready(function(){
         }
 
         // console.log(sortby+"  "+category+" "+instructor);
-        course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty);
+        course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty);
     });
 
     jQuery(".load_more_btn").click(function(){
-        course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty, ppp, g_offset, pagination);
+        course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty, ppp, g_offset, pagination);
         if(flag == 1){
             g_offset += ppp;
         }
     });
 
-    course_ajax_filter(sortby, category, instructor, price, archive_style, difficulty);
+    course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty);
     
 });
