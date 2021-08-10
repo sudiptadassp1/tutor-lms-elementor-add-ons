@@ -22,7 +22,7 @@ class Customizer_control{
 
         // Course Archive Template
         $wp_customize->add_setting('course_archive_template_settings', array(
-            'default'  => __("c_style_1"),
+            'default'  => __("archive_style_1"),
             'type'     => 'theme_mod',
             'transport' => 'refresh',
         ));   
@@ -42,7 +42,7 @@ class Customizer_control{
         
         // Single Course Template
         $wp_customize->add_setting('single_course_template_settings', array(
-            'default'  => __("cs_style_1"),
+            'default'  => __("single_style_1"),
             'type'     => 'theme_mod',
             'transport' => 'refresh',
         ));   

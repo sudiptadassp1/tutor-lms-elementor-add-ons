@@ -6,6 +6,11 @@
     $get_archive_style = get_theme_mod('course_archive_template_settings');
     $course_taxonomy_category = get_query_var('course-category');
     $course_taxonomy_tags = get_query_var('course-tag');
+
+    if(empty($get_archive_style)){
+        $get_archive_style = "archive_style_1";
+    }
+    
 ?>
 <div class="container">
     <input type="hidden" name="" class="archive_style" value="<?php _e($get_archive_style); ?>">
@@ -158,9 +163,6 @@
                         <div class="row load_more_button justify-content-center">
                             <button class="load_more_btn">Load More</button>
                         </div>
-                        <div class="ajax-loader">
-                            <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ).'assets/media/loader.gif'; ?>" class="img-responsive" />
-                        </div>
                     </div>
                 </div>
             <?php
@@ -178,9 +180,7 @@
                                     <div class="row load_more_button justify-content-center">
                                         <button class="load_more_btn">Load More</button>
                                     </div>
-                                    <div class="ajax-loader">
-                                        <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ).'assets/media/loader.gif'; ?>" class="img-responsive" />
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -304,5 +304,19 @@
     
 </div>
 
+<?php
+    function ajax_loader_footer(){
+        ?>
+            <div class="container-fluid archive_block_full_page">
+                <div class="ajax-loader">
+                    <img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ).'assets/media/loader.gif'; ?>" class="img-responsive" />
+                </div>
+            </div>
+        <?php
+    } 
+    add_action( 'wp_footer', 'ajax_loader_footer' );
+?>
+
+               
  
                                     

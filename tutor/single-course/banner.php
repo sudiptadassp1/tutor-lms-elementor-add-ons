@@ -87,7 +87,7 @@ function single_banner_video_block(){
                     $video_id = 'https://player.vimeo.com/video/'.$vimeo_video_id;
                 }
             ?>
-                <a class="play-btn popup-youtube" href="<?php _e($video_id); ?>" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-play"></i></a>
+                <a class="play-btn popup-youtube" href="<?php _e($video_id); ?>"><i class="fas fa-play"></i></a>
             </div>
         </div>
     <?php
@@ -98,6 +98,9 @@ function single_banner_video_block(){
 if(!function_exists("tutor_addons_single_banner")){
     function tutor_addons_single_banner($echo = true){
         $single_course_style = get_theme_mod('single_course_template_settings');
+        if(empty($single_course_style)){
+            $single_course_style = "single_style_1";
+        }
         ?>
             <div class="single-colurse-banner container-fluid banner-info-style-1 <?php
                 if($single_course_style == "single_style_1"){
@@ -124,6 +127,30 @@ if(!function_exists("tutor_addons_single_banner")){
                             single_banner_video_block();
                         }
                         ?>              
+                    </div>
+                    
+                    <!-- Button trigger modal -->
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Launch demo modal
+                    </button> -->
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

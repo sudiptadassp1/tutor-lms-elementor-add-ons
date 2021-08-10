@@ -192,6 +192,7 @@ hr{
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     list-style: none;
+    padding-left: 15px;
 }
 
 .course_lesson_details .inline-list li{
@@ -1688,24 +1689,27 @@ Course Archive Style 2
     transform: scale(1.07, 1.07);
 }
 
-.archive.course_block {
-    position: relative;
+.archive_block_full_page {
+    padding: 0 !important;
+    margin: 0;
 }
 
-.archive.course_block .ajax-loader {
+.archive_block_full_page .ajax-loader {
     position: absolute;
     top: 0;
     z-index: 1;
-    height: 100%;
-    left: 0;
+    background-color: #000000a1;
     width: 100%;
-    background-color: #000000a8;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 
-.archive.course_block .ajax-loader img {
-    position: absolute;
-    left: 40%;
-    top: 10%;
+.archive_block_full_page .ajax-loader img {
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
 }
 
 .empty_course_alert{
@@ -1832,6 +1836,25 @@ button.load_more_btn:hover {
 .tutor-notice-warning {
     display: none;
 }
+
+
+.tutor_addons_course-wish-list i{
+    color: white;
+    background-color: #de003f;
+    border: solid 1px #de003f;
+    padding: 10px;
+    border-radius: 50px;
+}
+.tutor_addons_course-wish-list i:hover{
+    background-color: transparent;
+    border: solid 1px #fff;
+    color: #fff;
+}
+
+.has-wish-listed i {
+    background-color: white;
+    color: #de003f;
+}
 /* Course Archive Style 3 & 4 End */
 
 /* 
@@ -1851,3 +1874,40 @@ Single Course Enroll
 }
 
 /* Single Course Enroll End */
+
+
+/* 
+===========================
+Sign Up Template
+===========================
+*/
+
+/* Sign Up template Start */
+
+.tutor_addon_signUp {
+    background-image: linear-gradient(45deg, #a80e72,  #0f28a2, #cf1484);
+    border-radius: 10px;
+    box-shadow: 0 0 13px 0 black;
+}
+
+.tutor_addon_signUp .sign_up_form {
+    background: white;
+    margin: 70px 0;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.tutor_addon_signUp .sign_up_form input {
+    height: 40px;
+}
+
+.tutor_addon_signUp button.tutor-button{
+    width: 100%;
+    display: block !important;
+}
+
+.image_animation img {
+    transform: rotatey(180deg);
+}
+
+/* Sign Up template End */

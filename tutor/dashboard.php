@@ -41,7 +41,7 @@ $enable_profile_completion = tutils()->get_option('enable_profile_completion');
 do_action('tutor_dashboard/before/wrap');
 ?>
 
-    <div class="tutor-wrap tutor-dashboard tutor-dashboard-student">
+    <div class="tutor-wrap tutor-dashboard tutor-dashboard-student single_course_body">
         <div class="tutor-container">
             <div class="tutor-row">
                 <div class="tutor-col-12">

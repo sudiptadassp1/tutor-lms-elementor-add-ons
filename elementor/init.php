@@ -133,7 +133,7 @@ final class Tutor_Elementor_addon {
 		$message = sprintf(
 			/* translators: 1: Plugin name 2: Elementor */
 			esc_html__( '"%1$s" requires "%2$s" to be installed and activated.', 'tutor' ),
-			'<strong>' . esc_html__( 'Elementor Test Extension', 'tutor' ) . '</strong>',
+			'<strong>' . esc_html__( 'Elementor addons for tutor LMS', 'tutor' ) . '</strong>',
 			'<strong>' . esc_html__( 'Elementor', 'tutor' ) . '</strong>'
 		);
 

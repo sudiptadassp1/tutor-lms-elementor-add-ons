@@ -307,17 +307,27 @@ class Elementor_Helper{
                                     <!-- Card back face start -->
                                     <div class="card_backend">
                                         <div class="card-body back course_back_face">
-                                            <h5 class="back_course_category course_back_face">
-                                                <?php
-                                                    foreach($course_categories as $index=>$course_category){
-                                                        $Category_name_in_loop = $course_category->name;
-                                                        if($index > 0){
-                                                            $Category_name_in_loop = ", ".$Category_name_in_loop;
-                                                        }
-                                                        _e($Category_name_in_loop);
-                                                    }
-                                                ?>
-                                            </h5>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <h5 class="back_course_category course_back_face">
+                                                        <?php
+                                                            foreach($course_categories as $index=>$course_category){
+                                                                $Category_name_in_loop = $course_category->name;
+                                                                if($index > 0){
+                                                                    $Category_name_in_loop = ", ".$Category_name_in_loop;
+                                                                }
+                                                                _e($Category_name_in_loop);
+                                                            }
+                                                        ?>
+                                                    </h5>
+                                                </div>
+                                                <div class="col-2">
+                                                    <a href="#" class="tutor_addons_course-wish-list" course-id="<?php _e($course_id); ?>">
+                                                        <i class="far fa-heart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
                                             <h3 class="back card-title course_back_face back_title"><?php the_title(); ?></h3>
                                             <div class="back_course_excerpt course_back_face">
                                                 <?php the_excerpt(); ?>
@@ -386,8 +396,18 @@ class Elementor_Helper{
                                                 self::get_course_rating($course_id);
                                             ?>
                                         </div>
-                                        <div class="teacher-name">
-                                            <?php self::get_instructor_name($course_instructors, "left", "name"); ?>
+                                        
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <div class="teacher-name">
+                                                    <?php self::get_instructor_name($course_instructors, "left", "name"); ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="#" class="tutor_addons_course-wish-list" course-id="<?php _e($course_id); ?>">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                         <h3 class="title">
                                             <a href="<?php _e(get_permalink($course_id)); ?>"><?php the_title(); ?></a>
@@ -476,17 +496,26 @@ class Elementor_Helper{
                                     <!-- Card back face start -->
                                     <div class="card_backend">
                                         <div class="card-body back course_back_face">
-                                            <h5 class="back_course_category course_back_face">
-                                                <?php
-                                                    foreach($course_categories as $index=>$course_category){
-                                                        $Category_name_in_loop = $course_category->name;
-                                                        if($index > 0){
-                                                            $Category_name_in_loop = ", ".$Category_name_in_loop;
-                                                        }
-                                                        _e($Category_name_in_loop);
-                                                    }
-                                                ?>
-                                            </h5>
+                                            <div class="row">
+                                                    <div class="col-10">
+                                                        <h5 class="back_course_category course_back_face">
+                                                            <?php
+                                                                foreach($course_categories as $index=>$course_category){
+                                                                    $Category_name_in_loop = $course_category->name;
+                                                                    if($index > 0){
+                                                                        $Category_name_in_loop = ", ".$Category_name_in_loop;
+                                                                    }
+                                                                    _e($Category_name_in_loop);
+                                                                }
+                                                            ?>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <a href="#" class="tutor_addons_course-wish-list" course-id="<?php _e($course_id); ?>">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             <h3 class="back card-title course_back_face back_title"><?php the_title(); ?></h3>
                                             <div class="row">
                                                 <ul class="course_back_face course-feature">
