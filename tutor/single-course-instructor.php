@@ -18,7 +18,7 @@ do_action('tutor_course/single/instructor/before/wrap');
 
 <div <?php tutor_post_class('tutor-full-width-course-top tutor-course-top-info tutor-page-wrap'); ?>>
     <div class="tutor-container">
-        <div class="tutor-row jj">
+        <div class="tutor-row">
             <div class="tutor-col-8 tutor-col-md-100">
                 <?php do_action('tutor_course/single/instructor/before/inner-wrap'); ?>
                 <?php tutor_course_lead_info(); ?>

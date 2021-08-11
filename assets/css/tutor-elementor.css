@@ -1911,3 +1911,46 @@ Sign Up Template
 }
 
 /* Sign Up template End */
+
+/* Video Modal Start */
+
+#single_course_video_modal .modal-dialog {
+    max-width: 800px !important;
+}
+
+#single_course_video_modal iframe#video {
+    width: 100%;
+    height: 100%;
+}
+#single_course_video_modal .modal-content {
+    height: 500px !important;
+}
+.embed-responsive.embed-responsive-16by9 {
+    height: 100%;
+}
+
+#single_course_video_modal .modal-body {
+    padding: 0;
+}
+
+.video_play_button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 50px;
+    border-radius: 15px !important;
+}
+
+
+.video_play_button i.fas.fa-play {
+    font-size: 25px;
+}
+
+.banner-info-style-1 .figure-box {
+    position: relative;
+}
+
+/* Video Modal End */
+

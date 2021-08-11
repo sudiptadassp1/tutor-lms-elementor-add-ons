@@ -81,13 +81,17 @@ function single_banner_video_block(){
                 $youtube_video_id = tutor_utils()->get_youtube_video_id(tutor_utils()->avalue_dot('source_youtube', $video_info));
                 if(empty($vimeo_video_id)){
                     if(!empty($youtube_video_id)){
-                        $video_id = 'http://www.youtube.com/watch?v='.$youtube_video_id;
+                        $video_id = 'https://www.youtube.com/embed/'.$youtube_video_id;
                     }
                 }else{
                     $video_id = 'https://player.vimeo.com/video/'.$vimeo_video_id;
                 }
             ?>
-                <a class="play-btn popup-youtube" href="<?php _e($video_id); ?>"><i class="fas fa-play"></i></a>
+                
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary video_play_button" data-bs-toggle="modal" data-bs-target="#single_course_video_modal" data-src="<?php _e($video_id); ?>">
+                    <i class="fas fa-play"></i>
+                </button>
             </div>
         </div>
     <?php
@@ -128,29 +132,22 @@ if(!function_exists("tutor_addons_single_banner")){
                         }
                         ?>              
                     </div>
-                    
-                    <!-- Button trigger modal -->
-                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                    </button> -->
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal fade " id="single_course_video_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                                    </div>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>

@@ -41,9 +41,9 @@ if ($elementor_active && $tutor_active) {
 		wp_enqueue_script( 'tutor-wow-js', plugin_dir_url( __FILE__ ) . 'dependencies/wow/js/wow.min.js', '', true );
 	
 		if(!is_admin()){
-			wp_enqueue_style( 'bootstrap-css-library', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css' );
+			wp_enqueue_style( 'bootstrap-css-library', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css' );
 			wp_enqueue_style( 'font-awesome-css-library', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css' );
-			wp_enqueue_script( 'bootstrap-js-library', 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js', null, null, false );
+			wp_enqueue_script( 'bootstrap-js-library', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js', null, null, false );
 		}
 	}
 	
