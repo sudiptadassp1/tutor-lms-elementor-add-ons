@@ -36,12 +36,14 @@ class Course_Style_1{
                     $course_categories = get_the_terms($course_id, TUTOR_TAXONOMY);
                     $course_instructors = tutor_utils()->get_instructors_by_course($course_id);
                     $course_duration = get_tutor_course_duration_context($course_id);
+                    $course_price = "Free";
+                    if(array_key_exists('_tutor_course_price_type', $course_meta)){
+                        if(strtolower($course_meta['_tutor_course_price_type'][0]) !="free"){
+                            $course_price = Elementor_Helper::get_woocommerce_course_price($course_meta['_tutor_course_product_id'][0]);
+                        }
+                    }
 
-                    if(strtolower($course_meta['_tutor_course_price_type'][0])=="free"){
-                        $course_price = "Free";
-                    }else{
-                        $course_price = Elementor_Helper::get_woocommerce_course_price($course_meta['_tutor_course_product_id'][0]);
-                    }   
+                       
                     
                     ?>
                         <div class="col-sm-<?php echo $grid_column_divider; ?> course_card <?php
