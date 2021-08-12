@@ -92,6 +92,35 @@ function single_banner_video_block(){
                 <button type="button" class="btn btn-primary video_play_button" data-bs-toggle="modal" data-bs-target="#single_course_video_modal" data-src="<?php _e($video_id); ?>">
                     <i class="fas fa-play"></i>
                 </button>
+
+                 <!-- Modal -->
+                 <div class="modal fade " id="single_course_video_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <?php
+                                    if($video_id == ""){
+                                        ?>
+                                            <div class="alert alert-info text-center video_not_found_notice" role="alert">
+                                                No Video Found !!
+                                            </div>
+                                        <?php
+                                    }else{
+                                        ?>
+                                            <div class="embed-responsive embed-responsive-16by9">
+                                                <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                                            </div>
+                                        <?php
+                                    }
+                                ?>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     <?php
@@ -131,23 +160,6 @@ if(!function_exists("tutor_addons_single_banner")){
                             single_banner_video_block();
                         }
                         ?>              
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade " id="single_course_video_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

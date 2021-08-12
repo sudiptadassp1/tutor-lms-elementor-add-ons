@@ -1347,6 +1347,7 @@ Single Course Template
 }
 .single_course_side_block_1 ul{
     padding-left: 0;
+    margin-left: 0;
 }
 
 span.course_cat {
@@ -1820,6 +1821,15 @@ Course Archive Style 3 & 4
     padding: 10px 50px;
     border-radius: 50px;
     background-image: linear-gradient(45deg, #0071dc, #ed00ff);
+    width: auto;
+}
+
+.single_course_side_block_1 ul.block-list.list-item {
+    margin-left: 0;
+}
+
+.single_course_side_block_1 .widget-section-heading.heading-dark {
+    margin-bottom: 15px;
 }
 
 .load_more_button {
@@ -1951,6 +1961,13 @@ Sign Up Template
 
 .banner-info-style-1 .figure-box {
     position: relative;
+}
+
+.video_not_found_notice {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Video Modal End */
