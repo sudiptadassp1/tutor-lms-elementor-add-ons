@@ -454,7 +454,6 @@ Course Instructor Widget
 .instructor_column.first {
     padding: 30px 15px;
     border-radius: 30px !important;
-    width: 100%;
 }
 
 .instructor_column.first, .instructor_column.rest_description_block {
@@ -786,10 +785,10 @@ Testimonials Widget
     border-radius: 10px;
 }
 
-.testimonial-box.style-1 p.description {
+.testimonial-box.style-1 .description {
     margin-bottom: 40px;
-    font-size: 20px;
-    font-style: italic;
+    font-size: 15px;
+    font-style: italic !important;
     letter-spacing: 1.2px;
     color: #888;
 }
@@ -858,8 +857,10 @@ Testimonials Widget
   }
 
   .testimonial-box .testimonial-rating {
-    color: #f5c415;
     font-size: 14px;
+  }
+  .testimonial-box .testimonial-rating .rated{
+      color: #f5c415;
   }
   
   .testimonial-box .testimonial-rating li {

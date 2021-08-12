@@ -13,7 +13,7 @@ class Tutor_Testimonials extends Widget_Base {
 
     protected function _register_controls() {   
 		require_once(TUTOR_BASE_DIR.'elementor/widgets/testimonials/tabs/content.php');
-		// require_once(TUTOR_BASE_DIR.'elementor/widgets/testimonials/tabs/style.php');
+		require_once(TUTOR_BASE_DIR.'elementor/widgets/testimonials/tabs/style.php');
 	}
 
     protected function render() {

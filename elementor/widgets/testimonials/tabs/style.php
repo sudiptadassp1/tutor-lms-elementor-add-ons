@@ -2,335 +2,297 @@
     $this->start_controls_section(
         'style_section',
         [
-            'label' => __( 'Style', 'tutor' ),
+            'label' => __( 'Testimonial Style', 'tutor' ),
             'tab' => \Elementor\Controls_Manager::TAB_STYLE,
         ]
     );
 
-    $this->start_controls_tabs(
-        'side_post_style_tabs'
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 't_card_background',
+            'label' => __('Card Background', 'tutor'),
+            'types' => ['classic', 'gradient'],
+            'selector' => '{{WRAPPER}} .swiper-slide',
+        ]
     );
 
-        //Normal Style
-        $this->start_controls_tab(
-            'side_card_style__tab',
-            [
-                'label' => __('Side Column', 'tutor'),
-            ]
-        );
-
-            // Side Card Style
-            $this->add_control(
-                'side-card-term-style',
-                [
-                    'label' => __( 'Side Card Term Style', 'tutor' ),
-                    'type' => \Elementor\Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Background::get_type(),
-                [
-                    'name' => 'side_card_term_bg',
-                    'label' => __(' Category Background', 'tutor'),
-                    'types' => ['classic', 'gradient'],
-                    'selector' => '{{WRAPPER}} .blog-box.style-1 .category-name',
-                ]
-            );
-
-            $this->add_control(
-                'side_card_term_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .blog-box.style-1 .category-name' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'side_card_term_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .blog-box.style-1 .category-name',
-                ]
-            );
-
-            // Side card text  block Style
-            $this->add_control(
-                'side-card-text-style',
-                [
-                    'label' => __( 'Text Block Style', 'tutor' ),
-                    'type' => \Elementor\Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Background::get_type(),
-                [
-                    'name' => 'side_card_text_block_bg',
-                    'label' => __('Background', 'tutor'),
-                    'types' => ['classic', 'gradient'],
-                    'selector' => '{{WRAPPER}} .blog-box.style-1 .content-box',
-                ]
-            );
-
-            $this->add_control(
-                'side_card_text_block_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Title Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .blog-box.style-1 .content-box .title a' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'side_card_text_block_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .blog-box.style-1 .content-box .title a',
-                ]
-            );
-
-            // Date Style
-            $this->add_control(
-                'side-card-date-style',
-                [
-                    'label' => __( 'Date Style', 'tutor' ),
-                    'type' => \Elementor\Controls_Manager::HEADING,
-                    'separator' => 'before',
-                ]
-            );
-
-            $this->add_control(
-                'side_card_date_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Date Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .blog-box.style-1 .content-box ul.entry-meta li' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'side_card_date_block_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .blog-box.style-1 .content-box ul.entry-meta li',
-                ]
-            );
-
-        $this->end_controls_tab();
-
-        // Center Column Style
-        $this->start_controls_tab(
-            'center_blog_style_tab',
-            [
-                'label' => __('Center Column', 'tutor'),
-            ]
-        );
-
-        // Category Style
-        $this->add_control(
-            'center_card_term_color',
-            [
-                'type' => \Elementor\Controls_Manager::COLOR,
-                'label' => esc_html__('Category Color', 'tutor'),
-                'selectors' => [
-                    '{{WRAPPER}} .blog-box.style-2 .category-name' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'center_card_term_typography',
-                'label' => __( 'Category Typography', 'tutor' ),
-                'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                'selector' => '{{WRAPPER}} .blog-box.style-2 .category-name',
-            ]
-        );
-
-        // Title Style
-        $this->add_control(
-                'center_card_text_block_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Title Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .blog-box.style-2 .content-box .title a' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'center_card_text_block_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .blog-box.style-2 .content-box .title a',
-                ]
-            );
-
-            // Date Style
-            $this->add_control(
-                'center_card_date_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Date Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .blog-box.style-2 .content-box ul.entry-meta li' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
-
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'center_card_date_block_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .blog-box.style-2 .content-box ul.entry-meta li',
-                ]
-            );
-
-        $this->end_controls_tab();
-
-    $this->end_controls_tabs();
-
+    // Icon Style Start
 
     $this->add_control(
-        'button-heading-style',
+        't_icon_style',
         [
-            'label' => __( 'Button Style', 'tutor' ),
+            'label' => __( 'Icon Style', 'tutor' ),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
         ]
     );
 
-    // Button Style
-    $this->start_controls_tabs(
-        'button_style_tabs'
+    $this->add_control(
+        't_quote_icon_color',
+        [
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'label' => esc_html__('Icon Color', 'tutor'),
+            'selectors' => [
+                '{{WRAPPER}} .testimonial-box.style-1 .icon-box .fa-quote-left' => 'color: {{VALUE}}',
+            ],
+        ]
     );
 
-        //Normal Style
-        $this->start_controls_tab(
-            'button_normal_style_tab',
-            [
-                'label' => __('Normal', 'tutor'),
-            ]
-        );
+    $this->add_control(
+        't_icon_size',
+        [
+            'label' => __( 'Icon Size', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%' ],
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 100,
+                    'step' => 1,
+                ],
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'default' => [
+                'unit' => 'px',
+                'size' => 25,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .testimonial-box.style-1 .icon-box .fa-quote-left' => 'font-size: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
 
-            $this->add_group_control(
-                \Elementor\Group_Control_Background::get_type(),
-                [
-                    'name' => 'button_normal_bg',
-                    'label' => __(' Category Background', 'tutor'),
-                    'types' => ['classic', 'gradient'],
-                    'selector' => '{{WRAPPER}} .view_all_button a.view_all_post_btn',
-                ]
-            );
+    // Icon Style End
 
-            $this->add_control(
-                'button_normal_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .view_all_button a.view_all_post_btn' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
+    // Comment Style Start
 
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'button_normal_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .view_all_button a.view_all_post_btn',
-                ]
-            );
+    $this->add_control(
+        't_comment_style',
+        [
+            'label' => __( 'Comment Style', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
 
-            $this->add_control(
-                'button_align',
-                [
-                    'label' => __( 'Alignment', 'tutor' ),
-                    'type' => \Elementor\Controls_Manager::CHOOSE,
-                    'options' => [
-                        'left' => [
-                            'title' => __( 'Left', 'tutor' ),
-                            'icon' => 'fa fa-align-left',
-                        ],
-                        'center' => [
-                            'title' => __( 'Center', 'tutor' ),
-                            'icon' => 'fa fa-align-center',
-                        ],
-                        'right' => [
-                            'title' => __( 'Right', 'tutor' ),
-                            'icon' => 'fa fa-align-right',
-                        ],
-                    ],
-                    'default' => 'center',
-                    'toggle' => true,
-                ]
-            );
+    $this->add_control(
+        't_comment_color',
+        [
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'label' => esc_html__('Comment Color', 'tutor'),
+            'selectors' => [
+                '{{WRAPPER}} .testimonial-box.style-1 .description p' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
 
-        $this->end_controls_tab();
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name' => 't_comment_typography',
+            'label' => __( 'Typography', 'tutor' ),
+            'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+            'selector' => '{{WRAPPER}} .testimonial-box.style-1 .description p',
+        ]
+    );
+    
 
-        // Hover Style
-        $this->start_controls_tab(
-            'button_hover_style_tab',
-            [
-                'label' => __('Hover', 'tutor'),
-            ]
-        );
+    // Comment Style End
 
-            $this->add_group_control(
-                \Elementor\Group_Control_Background::get_type(),
-                [
-                    'name' => 'button_hover_bg',
-                    'label' => __(' Category Background', 'tutor'),
-                    'types' => ['classic', 'gradient'],
-                    'selector' => '{{WRAPPER}} .view_all_button:hover a.view_all_post_btn',
-                ]
-            );
+    // Name Style Start
 
-            $this->add_control(
-                'button_hover_color',
-                [
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'label' => esc_html__('Color', 'tutor'),
-                    'selectors' => [
-                        '{{WRAPPER}} .view_all_button:hover a.view_all_post_btn' => 'color: {{VALUE}}',
-                    ],
-                ]
-            );
+    $this->add_control(
+        't_name_style',
+        [
+            'label' => __( 'Name Style', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
 
-            $this->add_group_control(
-                \Elementor\Group_Control_Typography::get_type(),
-                [
-                    'name' => 'button_hover_typography',
-                    'label' => __( 'Typography', 'tutor' ),
-                    'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
-                    'selector' => '{{WRAPPER}} .view_all_button:hover a.view_all_post_btn',
-                ]
-            );
+    $this->add_control(
+        't_name_color',
+        [
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'label' => esc_html__('Name Color', 'tutor'),
+            'selectors' => [
+                '{{WRAPPER}} .testimonial-box .title' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
 
-        $this->end_controls_tab();
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name' => 't_name_typography',
+            'label' => __( 'Typography', 'tutor' ),
+            'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+            'selector' => '{{WRAPPER}} .testimonial-box .title',
+        ]
+    );
+
+    // Name Style End
+
+    // Designation Style Start
+
+    $this->add_control(
+        't_designation_style',
+        [
+            'label' => __( 'Designation Style', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+
+    $this->add_control(
+        't_designation_color',
+        [
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'label' => esc_html__('Designation Color', 'tutor'),
+            'selectors' => [
+                '{{WRAPPER}} .testimonial-box .designation' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        \Elementor\Group_Control_Typography::get_type(),
+        [
+            'name' => 't_designation_typography',
+            'label' => __( 'Typography', 'tutor' ),
+            'scheme' => \Elementor\Scheme_Typography::TYPOGRAPHY_1,
+            'selector' => '{{WRAPPER}} .testimonial-box .designation',
+        ]
+    );
+    
+    // Designation Style End
+
+    // Rating Style Start
+
+    $this->add_control(
+        't_rating_style',
+        [
+            'label' => __( 'Rating Style', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+
+    $this->add_control(
+        't_Unrated_color',
+        [
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'label' => esc_html__('Unrated Color', 'tutor'),
+            'selectors' => [
+                '{{WRAPPER}} ul.testimonial-rating li .fa-star' => 'color: {{VALUE}}',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        't_rated_color',
+        [
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'label' => esc_html__('Rated Color', 'tutor'),
+            'selectors' => [
+                '{{WRAPPER}} .testimonial-box .testimonial-rating li .rated' => 'color: {{VALUE}}',
+            ],
+        ]
+    );    
+
+    $this->add_control(
+        't_rating_size',
+        [
+            'label' => __( 'Rating Icon Size', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%' ],
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 100,
+                    'step' => 1,
+                ],
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'default' => [
+                'unit' => 'px',
+                'size' => 15,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} ul.testimonial-rating li .fa-star' => 'font-size: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+    
+    // Rating Style End
+
+    // Arrow Style Start
+
+    $this->add_control(
+        't_arrow_style',
+        [
+            'label' => __( 'Arrow Control Style', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
+    );
+
+    $this->add_group_control(
+        \Elementor\Group_Control_Background::get_type(),
+        [
+            'name' => 't_arrow_bg_color',
+            'label' => __('Arrow Background Color', 'tutor'),
+            'types' => ['classic', 'gradient'],
+            'selector' => '{{WRAPPER}} .arrow-indicator-left, {{WRAPPER}} .arrow-indicator-right',
+        ]
+    );
+
+    $this->add_control(
+        't_arrow_padding',
+        [
+            'label' => __( 'Padding', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::DIMENSIONS,
+            'size_units' => [ 'px', '%', 'em' ],
+            'selectors' => [
+                '{{WRAPPER}} .arrow-indicator-left' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                '{{WRAPPER}} .arrow-indicator-right' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        't_arrow_size',
+        [
+            'label' => __( 'Arrow Icon Size', 'tutor' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'size_units' => [ 'px', '%' ],
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 100,
+                    'step' => 1,
+                ],
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'default' => [
+                'unit' => 'px',
+                'size' => 30,
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .arrow-icons .fa-chevron-right' => 'font-size: {{SIZE}}{{UNIT}};',
+            ],
+        ]
+    );
+    // Arrow Style End
 
     $this->end_controls_section();

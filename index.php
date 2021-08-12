@@ -24,10 +24,14 @@ if ($elementor_active && $tutor_active) {
 	if ( ! class_exists('Customizer_control') ) {
 		include_once 'customizer/init.php';
 	}
+
+	if ( ! class_exists('Course_Events') ) {
+		include_once 'events/init.php';
+	}
 	
 	add_action( 'wp_enqueue_scripts', 'tutor_enqueue_scripts' );
 	add_action( 'admin_enqueue_scripts', 'tutor_enqueue_scripts' );
-	add_action( 'init', 'ajax_script_enqueuer');
+	add_action( 'init', 'ajax_script_enqueuer_for_tutor_addon');
 	  
 	function tutor_enqueue_scripts(){
 		wp_enqueue_style( 'tutor-elementor', plugin_dir_url( __FILE__ ) . 'assets/css/tutor-elementor.css' );
@@ -47,7 +51,7 @@ if ($elementor_active && $tutor_active) {
 		}
 	}
 	
-	function ajax_script_enqueuer() {
+	function ajax_script_enqueuer_for_tutor_addon() {
 		wp_register_script( "ajax_script", plugin_dir_url( __FILE__ ).'assets/js/ajax-filter.js', array('jquery') );
 		wp_localize_script( 'ajax_script', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' )));       
 	

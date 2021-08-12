@@ -1,7 +1,7 @@
 var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween: 30,
-    slidesPerGroup: 1,
+    // slidesPerGroup: 3,
     loop: true,
     loopFillGroupWithBlank: true,
     centeredSlides: true,
@@ -16,5 +16,13 @@ var swiper = new Swiper(".mySwiper", {
     navigation: {
       nextEl: ".arrow-indicator-right",
       prevEl: ".arrow-indicator-left",
+    },
+    breakpoints: {  
+      '576': {
+        slidesPerView: 2,
+      },
+      '993': {
+        slidesPerView: 3,
+      },
     },
   });

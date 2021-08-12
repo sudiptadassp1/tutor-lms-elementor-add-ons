@@ -26,6 +26,9 @@ $repeater->add_control(
         'type' => \Elementor\Controls_Manager::TEXT,
         'default' => __( '' , 'tutor' ),
         'label_block' => true,
+        'dynamic' => [
+            'active' => true,
+        ],
     ]
 );
 
@@ -82,11 +85,11 @@ $this->add_control(
         'fields' => $repeater->get_controls(),
         'default' => [
             [
-                'list_title' => __( 'Item #1', 'tutor' ),
+                'list_title' => __( "Item", 'tutor' ),
                 'list_content' => __( 'Item content. Click the edit button to change this text.', 'tutor' ),
             ],
         ],
-        'title_field' => '{{{ list_title }}}',
+        'title_field' => '{{{ testimonial_title }}}',
     ]
 );
 
