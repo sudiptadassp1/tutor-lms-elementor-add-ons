@@ -169,17 +169,20 @@ class Elementor_Helper{
             'meta_query' => array(
                 'relation' => 'AND',
                 array(
-                    'key' => '_tutor_course_price_type',
-                    'value'    => $price,
-                    'compare'    => 'LIKE',
-                ),
-                array(
                     'key' => '_tutor_course_level',
                     'value' => $difficulty,
                     'compare' => 'LIKE',
                 ),
+                // array(
+                //     'key' => '_tutor_course_price_type',
+                //     'value'    => $price,
+                //     'compare'    => 'LIKE',
+                // ),
             ),           
         );
+        
+        print_r($price);
+        
 
         if(!empty($category) && !empty($tags)){
             $args['tax_query'] = array(
@@ -233,13 +236,15 @@ class Elementor_Helper{
                 $course_instructors = tutor_utils()->get_instructors_by_course($course_id);
                 $course_duration = get_tutor_course_duration_context($course_id);
 
-                if(strtolower($course_meta['_tutor_course_price_type'][0])=="free"){
-                    $course_price = "Free";
-                    $courses_price_class = "free_course";
-                }else{
-                    $course_price = Elementor_Helper::get_woocommerce_course_price($course_meta['_tutor_course_product_id'][0]);
-                    $courses_price_class = "paid_course";
-                }  
+                $course_price = "Free";
+                $courses_price_class = "free_course";
+                if(array_key_exists('_tutor_course_price_type', $course_meta)){
+                    if(strtolower($course_meta['_tutor_course_price_type'][0]) !="free"){
+                        $course_price = Elementor_Helper::get_woocommerce_course_price($course_meta['_tutor_course_product_id'][0]);
+                        $courses_price_class = "paid_course";
+                    }
+                }
+        
                  
                 if(($archive_style == "archive_style_1") || ($archive_style == "archive_style_3")){
                     ?>

@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <hr/>
-                        <div class="filter_panel row row-cols-sm-12 row-cols-md-6 row-cols-lg-6">
+                        <div class="filter_panel row row-cols-sm-12 row-cols-md-6 row-cols-lg-5">
                             <div class="col">
                                 <!-- Sort By -->
                                 <div class="filter_panel_column">
@@ -49,7 +49,7 @@
                            
                             <!-- Category -->
                             <?php
-                                if(empty($course_taxonomy_category)){
+                                if(empty($course_taxonomy_category) && !empty($course_terms)){
                                     ?>
                                         <div class="col">
                                             <div class="filter_panel_column">
@@ -72,7 +72,7 @@
 
                             <!-- tags -->
                             <?php
-                                if(empty($course_taxonomy_tags)){
+                                if(empty($course_taxonomy_tags) && !empty($course_terms_tags)){
                                     ?>
                                         <div class="col">
                                             <div class="filter_panel_column">
@@ -110,9 +110,9 @@
                                     ?>
                                 </div>
                             </div>
-                            <div class="col">
+                            <!-- <div class="col">
                                 <!-- Price -->
-                                <div class="filter_panel_column">
+                                <!-- <div class="filter_panel_column">
                                     <h5>Price</h5>  
                                     <div class="form-check">
                                         <input class="form-check-input"  type="radio" name="price_option" data-var="price" data-id="">
@@ -128,7 +128,7 @@
                                         <label class="form-check-label" for="inlineRadio1"> Paid</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --> 
 
                             <div class="col">
                                 <!-- Difficulty -->
