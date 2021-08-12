@@ -63,7 +63,7 @@ class Elementor_Helper{
                         ?>
                             <a href="<?php _e($instructor_profile_url); ?>" class="instructor_profile">
                                 <h4 class="instructor_name instructor-title" style="text-align: <?php _e($alignment);?>">
-                                    <?php _e($course_instructor->display_name); ?>
+                                    <?php _e(ucwords($course_instructor->display_name)); ?>
                                 </h4>
                             </a>
                         <?php

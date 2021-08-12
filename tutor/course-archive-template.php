@@ -103,7 +103,7 @@
                                             ?>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" data-var="instructor" name="inlineRadioOptions" data-id="<?php _e($instructor->id) ?>">
-                                                    <label class="form-check-label" for="inlineRadio1"><?php _e($instructor_metadata['first_name'][0]." ".$instructor_metadata['last_name'][0]); ?></label>
+                                                    <label class="form-check-label" for="inlineRadio1"><?php _e(ucwords($instructor_metadata['nickname'][0])); ?></label>
                                                 </div>
                                             <?php
                                         }
