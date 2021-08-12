@@ -12,7 +12,7 @@ class News_Template{
                     if($post_object->have_posts()) :
                         while($post_object->have_posts()) : $post_object->the_post();
                         $post_id = get_the_ID();
-                        $post_categories = get_the_terms($post_id, 'category');
+                        $post_categories = get_the_terms($post_id, $settings['post-type']);
                         if($flag != 2 ){
                             if($flag == 0 || $flag == 3){ _e("<div class='col-lg-3 col-md-12 col-sm-12'>"); }
                             ?>
