@@ -79,7 +79,7 @@ if ($elementor_active && $tutor_active) {
 		global $wp_query;
 		$post_type = get_query_var('post_type');
 		$course_tag = get_query_var('course-tag');
-	
+
 		if ( ($post_type === "courses" || ! empty($course_tag) )  && $wp_query->is_archive){
 			$template = tutor_get_template('archive-course');
 			return $template;
@@ -87,6 +87,7 @@ if ($elementor_active && $tutor_active) {
 	
 		return $template;
 	}
+
 }else{
 	add_action('admin_notices', 'check_required_plugin_notice');
 	function check_required_plugin_notice(){

@@ -9,7 +9,7 @@ class Course_Style_1{
         $course_terms = Elementor_Helper::get_course_terms();
         $course_query_data = Elementor_Helper::course_query($course_settings['course_per_page']);
         $column_row_count = $course_settings['course_grid_column'];
-        $grid_column_divider = 12/$course_settings['course_grid_column'];
+        //$grid_column_divider = 12/$course_settings['course_grid_column'];
         $course_id = "";
         $course_category_color_count  = 1;
         ?>
@@ -46,7 +46,7 @@ class Course_Style_1{
                        
                     
                     ?>
-                        <div class="col-sm-<?php echo $grid_column_divider; ?> course_card <?php
+                        <div class="col-sm-4<?php //echo $grid_column_divider; ?> course_card <?php
                                 foreach($course_categories as $course_category){
                                     _e($course_category->slug." ");
                                 }
@@ -171,8 +171,8 @@ class Course_Style_1{
 
             if($course_settings['enable_all_course']){
             ?>
-                <div class="col-sm-<?php 
-                    echo $grid_column_divider; 
+                <div class="col-sm-4<?php 
+                    //echo $grid_column_divider; 
                     foreach($course_terms as $course_term){
                         echo " ".$course_term->slug;
                     }

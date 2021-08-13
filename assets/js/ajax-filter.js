@@ -1,4 +1,4 @@
-function course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty, ppp = 2, offset = 0, pagination = 0){
+function course_ajax_filter(sortby, tags, category, instructor, price, archive_style, course_taxonomies, course_taxonomies_tags, difficulty, ppp = 6, offset = 0, pagination = 0){
     jQuery.ajax({
         type : "post",
         url : myAjax.ajaxurl,
@@ -50,8 +50,8 @@ function course_ajax_filter(sortby, tags, category, instructor, price, archive_s
      }) 
 }
 
-var ppp = 2;
-var g_offset = 2;
+var ppp = 6;
+var g_offset = 6;
 var flag = 1;
 var pagination = 1;
 
@@ -67,7 +67,7 @@ jQuery(document).ready(function(){
     var difficulty = "";
 
     jQuery('.form-check-input').click(function(){
-        g_offset = 2;
+        g_offset = 6;
         console.log("F: "+g_offset);
         if(jQuery(this).attr('data-var') == "sortby"){
             if(jQuery(this).is(":checked")){

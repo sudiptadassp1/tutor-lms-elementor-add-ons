@@ -1,5 +1,6 @@
 <?php
 namespace Events;
+use Events\Single_Course_Event;
 
 final class Course_Events {
 
@@ -17,6 +18,7 @@ final class Course_Events {
     public function __construct(){
         add_action('init', [$this, 'register_event_post_type']); // Register event post type
         add_action('init', [$this, 'register_event_post_type_taxonomy']); // Register event post type taxonomy
+        add_filter( 'template_include', array($this, 'load_course_event_single'), 99 );
     }
 
     public function register_event_post_type(){
@@ -128,6 +130,15 @@ final class Course_Events {
      
         register_taxonomy( 'event_tag', 'course_event', $args );
      
+    }
+
+    public function load_course_event_single($template){
+        global $wp_query;
+        if($wp_query->is_single && ! empty($wp_query->query_vars['post_type']) && $wp_query->query_vars['post_type'] === "course_event"){
+            //$template = tutor_get_template( 'single-course_event' );
+        }
+
+        return $template;
     }
 
 }

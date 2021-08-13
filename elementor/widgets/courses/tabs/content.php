@@ -7,20 +7,20 @@
 		]
 	);
 
-	$this->add_control(
-		'course_grid_column',
-		[
-			'label' => __( 'Grid Column', 'tutor' ),
-			'type' => \Elementor\Controls_Manager::SELECT,
-			'default' => '3',
-			'options' => [
-				'1'  => __( '1', 'tutor' ),
-				'2' => __( '2', 'tutor' ),
-				'3' => __( '3', 'tutor' ),
-				'4' => __( '4', 'tutor' ),
-			],
-		]
-	);
+	// $this->add_control(
+	// 	'course_grid_column',
+	// 	[
+	// 		'label' => __( 'Grid Column', 'tutor' ),
+	// 		'type' => \Elementor\Controls_Manager::SELECT,
+	// 		'default' => '3',
+	// 		'options' => [
+	// 			'1'  => __( '1', 'tutor' ),
+	// 			'2' => __( '2', 'tutor' ),
+	// 			'3' => __( '3', 'tutor' ),
+	// 			'4' => __( '4', 'tutor' ),
+	// 		],
+	// 	]
+	// );
 
 	$this->add_control(
 		'course_per_page',

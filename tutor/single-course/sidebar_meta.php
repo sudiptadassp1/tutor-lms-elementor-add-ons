@@ -7,6 +7,7 @@ if(!function_exists("tutor_addons_single_sidebar_meta")){
         $course_duration = get_tutor_course_duration_context();
         $tutor_lesson_count = tutor_utils()->get_lesson_count_by_course($course_id);
         $disable_course_level = get_tutor_option('disable_course_level');
+        $course_categories = get_tutor_course_categories();
     ?>
     <ul>
         <?php
